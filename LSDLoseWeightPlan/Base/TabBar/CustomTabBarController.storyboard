@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Custom Tab Bar Controller-->
+        <scene sceneID="OVk-Qd-L10">
+            <objects>
+                <viewController storyboardIdentifier="CustomTabBarController" id="jg2-49-dLN" customClass="CustomTabBarController" customModule="BaseProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l2k-fQ-ZXW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Uuv-yK-Z8L">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qXS-Qt-rGd">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                    </containerView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSb-si-Hzi" customClass="CustomTabBar" customModule="BaseProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="49" id="lCA-JP-hOT"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9z4-zT-KCT">
+                                        <rect key="frame" x="0.0" y="862" width="414" height="34"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="73c-7q-rYh"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pSb-si-Hzi" firstAttribute="bottom" secondItem="73c-7q-rYh" secondAttribute="bottom" id="5vq-4z-Ckf"/>
+                            <constraint firstAttribute="trailing" secondItem="Uuv-yK-Z8L" secondAttribute="trailing" id="Lhk-bW-NbY"/>
+                            <constraint firstItem="Uuv-yK-Z8L" firstAttribute="leading" secondItem="l2k-fQ-ZXW" secondAttribute="leading" id="WgL-E4-M30"/>
+                            <constraint firstItem="Uuv-yK-Z8L" firstAttribute="top" secondItem="l2k-fQ-ZXW" secondAttribute="top" id="Ydf-2B-vO1"/>
+                            <constraint firstAttribute="bottom" secondItem="Uuv-yK-Z8L" secondAttribute="bottom" id="vx7-7g-HXO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomView" destination="9z4-zT-KCT" id="AfU-ib-Fyp"/>
+                        <outlet property="containerView" destination="qXS-Qt-rGd" id="cla-Vq-HSH"/>
+                        <outlet property="customTabBar" destination="pSb-si-Hzi" id="biw-cM-k56"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dXh-zG-fhW" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1188.4057971014495" y="-139.28571428571428"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

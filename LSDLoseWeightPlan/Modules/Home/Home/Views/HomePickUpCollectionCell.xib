@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HomePickUpCollectionCell" customModule="BaseProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="224" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="224" height="200"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vvt-ff-gjz">
+                        <rect key="frame" x="10" y="15" width="214" height="14"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nz8-PX-NUs">
+                        <rect key="frame" x="10" y="29" width="214" height="15.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
+                        <color key="textColor" red="0.34509803919999998" green="0.34509803919999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPO-vU-0a6">
+                        <rect key="frame" x="10" y="105.5" width="214" height="19.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" red="0.34509803919999998" green="0.34509803919999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmJ-DT-Qan">
+                        <rect key="frame" x="10" y="125" width="214" height="15.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                        <color key="textColor" red="0.34509803919999998" green="0.34509803919999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="XPO-vU-0a6" firstAttribute="leading" secondItem="Vvt-ff-gjz" secondAttribute="leading" id="7L7-yy-CWI"/>
+                <constraint firstAttribute="trailing" secondItem="Vvt-ff-gjz" secondAttribute="trailing" id="884-3s-dIE"/>
+                <constraint firstItem="bmJ-DT-Qan" firstAttribute="top" secondItem="XPO-vU-0a6" secondAttribute="bottom" id="AvC-EO-tGt"/>
+                <constraint firstItem="Nz8-PX-NUs" firstAttribute="trailing" secondItem="Vvt-ff-gjz" secondAttribute="trailing" id="B4y-rX-DAg"/>
+                <constraint firstItem="bmJ-DT-Qan" firstAttribute="leading" secondItem="Vvt-ff-gjz" secondAttribute="leading" id="Gev-eW-e5r"/>
+                <constraint firstItem="Nz8-PX-NUs" firstAttribute="top" secondItem="Vvt-ff-gjz" secondAttribute="bottom" id="IUp-Jv-zZC"/>
+                <constraint firstItem="Nz8-PX-NUs" firstAttribute="leading" secondItem="Vvt-ff-gjz" secondAttribute="leading" id="OaB-UN-NDc"/>
+                <constraint firstItem="Vvt-ff-gjz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="QaV-1k-88D"/>
+                <constraint firstItem="XPO-vU-0a6" firstAttribute="trailing" secondItem="Vvt-ff-gjz" secondAttribute="trailing" id="Slc-nY-LzV"/>
+                <constraint firstItem="XPO-vU-0a6" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="15" id="Xvn-TT-HlH"/>
+                <constraint firstItem="bmJ-DT-Qan" firstAttribute="trailing" secondItem="Vvt-ff-gjz" secondAttribute="trailing" id="ljk-kR-hH1"/>
+                <constraint firstItem="Vvt-ff-gjz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="tyS-PI-5Jr"/>
+            </constraints>
+            <size key="customSize" width="224" height="200"/>
+            <connections>
+                <outlet property="codeLabel" destination="Vvt-ff-gjz" id="Oqr-bC-LWd"/>
+                <outlet property="nameLabel" destination="Nz8-PX-NUs" id="3dZ-dV-ueB"/>
+                <outlet property="percentLabel" destination="bmJ-DT-Qan" id="TtK-d0-Qjw"/>
+                <outlet property="priceLabel" destination="XPO-vU-0a6" id="M28-7n-bdX"/>
+            </connections>
+            <point key="canvasLocation" x="266.66666666666669" y="190.84821428571428"/>
+        </collectionViewCell>
+    </objects>
+</document>
