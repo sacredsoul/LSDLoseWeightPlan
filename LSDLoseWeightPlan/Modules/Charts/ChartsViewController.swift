@@ -22,6 +22,12 @@ class ChartsViewController: BaseViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.reloadAction.accept(())
+    }
+    
     override func setupSubviews() {
         let lineChartView = LineChartView(frame: CGRect(x: 0, y: 90, width: Constants.screenWidth, height: 300))
         lineChartView.dragEnabled = true
@@ -86,6 +92,9 @@ class ChartsViewController: BaseViewController {
         let lineChartData = LineChartData(dataSet: dataSet)
         lineChartView.data = lineChartData
         lineChartView.chartDescription?.text = model.month
+        if let last = dataEntries.last {
+            lineChartView.moveViewToAnimated(xValue: last.x, yValue: last.y, axis: .left, duration: 2, easingOption: .easeInExpo)
+        }
     }
 }
 

@@ -8,12 +8,16 @@
 import Foundation
 
 class ChartsViewModel {
-    let lineDataSource = BehaviorRelay<WeightModel>(value: WeightModel())
+    let lineDataSource = PublishRelay<WeightModel>()
+    let reloadAction = PublishRelay<Void>()
     let disposeBag = DisposeBag()
     
     init() {
-        ChartsService.getTargetData()
-            .map { $0.translateToWeightModel() }
+        reloadAction
+            .flatMapLatest {
+                ChartsService.getTargetData()
+                    .map { $0.translateToWeightModel() }
+            }
             .bind(to: lineDataSource)
             .disposed(by: disposeBag)
     }
