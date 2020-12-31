@@ -61,6 +61,10 @@
 		5E839F2F2593328500815F43 /* ChartsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E839F2E2593328500815F43 /* ChartsViewModel.swift */; };
 		5E839F322593337E00815F43 /* WeightModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E839F312593337E00815F43 /* WeightModel.swift */; };
 		5E839F382593356800815F43 /* WeightResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E839F34259334D500815F43 /* WeightResponseModel.swift */; };
+		5E83A18E259D60D900815F43 /* MonthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E83A18D259D60D900815F43 /* MonthModel.swift */; };
+		5E83A196259D7A7100815F43 /* CardsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E83A192259D7A3300815F43 /* CardsLayout.swift */; };
+		5E83A19A259D9A0100815F43 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E83A198259D9A0100815F43 /* CardCell.swift */; };
+		5E83A19B259D9A0100815F43 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E83A199259D9A0100815F43 /* CardCell.xib */; };
 		847CD4DCFC0C018977DEA440 /* Pods_LSDLoseWeightPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5C23F921C5F35546F1C74C /* Pods_LSDLoseWeightPlan.framework */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +126,10 @@
 		5E839F2E2593328500815F43 /* ChartsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewModel.swift; sourceTree = "<group>"; };
 		5E839F312593337E00815F43 /* WeightModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightModel.swift; sourceTree = "<group>"; };
 		5E839F34259334D500815F43 /* WeightResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightResponseModel.swift; sourceTree = "<group>"; };
+		5E83A18D259D60D900815F43 /* MonthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthModel.swift; sourceTree = "<group>"; };
+		5E83A192259D7A3300815F43 /* CardsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsLayout.swift; sourceTree = "<group>"; };
+		5E83A198259D9A0100815F43 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		5E83A199259D9A0100815F43 /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 		732F6EC0BC2D2DC3F0034D42 /* Pods-LSDLoseWeightPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSDLoseWeightPlan.debug.xcconfig"; path = "Target Support Files/Pods-LSDLoseWeightPlan/Pods-LSDLoseWeightPlan.debug.xcconfig"; sourceTree = "<group>"; };
 		BB5C23F921C5F35546F1C74C /* Pods_LSDLoseWeightPlan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LSDLoseWeightPlan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -355,6 +363,7 @@
 			children = (
 				5E839F1225932B0F00815F43 /* ChartsViewController.swift */,
 				5E839F1525932B2700815F43 /* ChartsViewController.storyboard */,
+				5E83A188259D5FDF00815F43 /* Views */,
 				5E839F1925932CEE00815F43 /* Models */,
 				5E839F1825932CE200815F43 /* ViewModels */,
 			);
@@ -374,8 +383,19 @@
 			children = (
 				5E839F312593337E00815F43 /* WeightModel.swift */,
 				5E839F34259334D500815F43 /* WeightResponseModel.swift */,
+				5E83A18D259D60D900815F43 /* MonthModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		5E83A188259D5FDF00815F43 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5E83A192259D7A3300815F43 /* CardsLayout.swift */,
+				5E83A198259D9A0100815F43 /* CardCell.swift */,
+				5E83A199259D9A0100815F43 /* CardCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		BC9F790B4917AAE0CC52418A /* Pods */ = {
@@ -453,6 +473,7 @@
 				5E4F422325930B4E0063C1D5 /* HomeNoticeCell.xib in Resources */,
 				5E4F421425930B4E0063C1D5 /* HomeFoldCell.xib in Resources */,
 				5E4F421625930B4E0063C1D5 /* HomeCouponCell.xib in Resources */,
+				5E83A19B259D9A0100815F43 /* CardCell.xib in Resources */,
 				5E4F418A259304A60063C1D5 /* Assets.xcassets in Resources */,
 				5E4F422825930B4E0063C1D5 /* HomeSearchCell.xib in Resources */,
 				5E4F422025930B4E0063C1D5 /* HomeInfoCell.xib in Resources */,
@@ -523,6 +544,7 @@
 				5E4F421025930B4E0063C1D5 /* HomeModel.swift in Sources */,
 				5E839F2F2593328500815F43 /* ChartsViewModel.swift in Sources */,
 				5E839F322593337E00815F43 /* WeightModel.swift in Sources */,
+				5E83A196259D7A7100815F43 /* CardsLayout.swift in Sources */,
 				5E4F421525930B4E0063C1D5 /* HomeFoldCell.swift in Sources */,
 				5E4F422C25930B4E0063C1D5 /* BaseViewController.swift in Sources */,
 				5E4F421725930B4E0063C1D5 /* HomePickUpTableCell.swift in Sources */,
@@ -530,6 +552,7 @@
 				5E4F422925930B4E0063C1D5 /* HomePickUpCollectionSectionCell.swift in Sources */,
 				5E4F421F25930B4E0063C1D5 /* HomeFocusCell.swift in Sources */,
 				5E839F0B2593224D00815F43 /* TargetViewController.swift in Sources */,
+				5E83A18E259D60D900815F43 /* MonthModel.swift in Sources */,
 				5E839EFE25931ADA00815F43 /* RxCollectionViewCell.swift in Sources */,
 				5E839F0525931AED00815F43 /* GlobalConstants.swift in Sources */,
 				5E4F422F25930B4E0063C1D5 /* CustomTabBarController.swift in Sources */,
@@ -544,6 +567,7 @@
 				5E4F41DD25930B330063C1D5 /* APIManager.swift in Sources */,
 				5E4F420E25930B4E0063C1D5 /* HomePickUpCollectionViewModel.swift in Sources */,
 				5E4F4181259304A50063C1D5 /* AppDelegate.swift in Sources */,
+				5E83A19A259D9A0100815F43 /* CardCell.swift in Sources */,
 				5E4F422425930B4E0063C1D5 /* HomeCouponCell.swift in Sources */,
 				5E839F1325932B0F00815F43 /* ChartsViewController.swift in Sources */,
 				5E4F422E25930B4E0063C1D5 /* CustomTabBar.swift in Sources */,

@@ -10,6 +10,10 @@ import Charts
 
 class ChartsViewController: BaseViewController {
 
+    @IBOutlet weak var targetLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var emojiLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
     var lineChartView: LineChartView!
     
     let viewModel = ChartsViewModel()
@@ -28,7 +32,37 @@ class ChartsViewController: BaseViewController {
         viewModel.reloadAction.accept(())
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        collectionView.collectionViewLayout.invalidateLayout()
+        collectionView.layoutIfNeeded()
+    }
+    
     override func setupSubviews() {
+        collectionView.register(nibWithCellClass: CardCell.self)
+    }
+
+    override func setupBindings() {
+//        viewModel.lineDataSource
+//            .subscribe(onNext: { [weak self] model in
+//                if let last = model.months.last {
+//                    self?.setupLineChartData(model: last)
+//                }
+//            }).disposed(by: disposeBag)
+        
+        let collectionDataSource = RxCollectionViewSectionedAnimatedDataSource<MonthSectionModel> { (dataSource, collectionView, indexPath, item) -> UICollectionViewCell in
+            let cell = collectionView.dequeueReusableCell(withClass: CardCell.self, for: indexPath)
+            cell.imageView.image = item.image
+            return cell
+        }
+        
+        viewModel.collectionDataSource
+            .bind(to: collectionView.rx.items(dataSource: collectionDataSource))
+            .disposed(by: disposeBag)
+    }
+    
+    func setupLineChartView() {
         let lineChartView = LineChartView(frame: CGRect(x: 0, y: 90, width: Constants.screenWidth, height: 300))
         lineChartView.dragEnabled = true
         lineChartView.pinchZoomEnabled = true
@@ -54,17 +88,7 @@ class ChartsViewController: BaseViewController {
         xAxis.axisMaxLabels = 31
         xAxis.labelCount = 31
         
-        view.addSubview(lineChartView)
         self.lineChartView = lineChartView
-    }
-
-    override func setupBindings() {
-        viewModel.lineDataSource
-            .subscribe(onNext: { [weak self] model in
-                if let last = model.months.last {
-                    self?.setupLineChartData(model: last)
-                }
-            }).disposed(by: disposeBag)
     }
 
     func setupLineChartData(model: WeightMonthModel) {

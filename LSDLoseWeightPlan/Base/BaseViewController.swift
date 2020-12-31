@@ -16,10 +16,7 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
 
         self.setupSubviews()
-        /// Adding bindings to main thread to avoid warning UITableViewAlertForLayoutOutsideViewHierarchy
-        DispatchQueue.main.async {
-            self.setupBindings()
-        }
+        self.setupBindings()
     }
     
     /// Override for setting up subviews
