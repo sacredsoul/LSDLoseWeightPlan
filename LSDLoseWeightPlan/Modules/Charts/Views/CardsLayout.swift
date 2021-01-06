@@ -7,7 +7,12 @@
 
 import UIKit
 
+protocol CardsLayoutDelegate: class {
+    func transition(indexPath: IndexPath, progress: CGFloat)
+}
+
 class CardsLayout: UICollectionViewLayout {
+    weak var delegate: CardsLayoutDelegate!
     
     override var collectionView: UICollectionView {
         return super.collectionView!
@@ -25,7 +30,6 @@ class CardsLayout: UICollectionViewLayout {
     
     var minScale: CGFloat = 0.8
     var spacing: CGFloat = 35
-    var didInitialSetup: Bool = false
     
     override var collectionViewContentSize: CGSize {
         return CGSize(width: collectionView.bounds.width * CGFloat(numberOfItems), height: collectionView.bounds.height)
@@ -37,13 +41,6 @@ class CardsLayout: UICollectionViewLayout {
         return CGSize(width: width, height: height)
     }
     
-    override func prepare() {
-        super.prepare()
-        guard !didInitialSetup else { return }
-        didInitialSetup = true
-        collectionView.setContentOffset(CGPoint(x: collectionViewContentSize.width - collectionView.bounds.width, y: 0), animated: false)
-    }
-    
     override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
@@ -51,39 +48,44 @@ class CardsLayout: UICollectionViewLayout {
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         guard numberOfItems > 0 else { return nil }
         
-        let minVisibleIndex = max(currentIndex - visibleItemsCount + 1, 0)
-        let maxVisibleIndex = max(min(numberOfItems - 1, currentIndex + 1), minVisibleIndex)
+        let minVisibleIndex = currentIndex
+        let maxVisibleIndex = min(numberOfItems - 1, currentIndex + visibleItemsCount)
         let attributes: [UICollectionViewLayoutAttributes] = (minVisibleIndex...maxVisibleIndex).map {
             let indexPath = IndexPath(item: $0, section: 0)
-            return layoutAttributesForItem(at: indexPath)
+            return layoutAttributesForItem(at: indexPath, maxVisibleIndex: maxVisibleIndex)
         }
         return attributes
     }
     
-    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes {
+    private func layoutAttributesForItem(at indexPath: IndexPath, maxVisibleIndex: Int) -> UICollectionViewLayoutAttributes {
         let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
         attributes.size = itemSize
-        let visibleIndex = max(indexPath.item - currentIndex + visibleItemsCount, 0)
-        let topCardMidX = collectionView.contentOffset.x + collectionView.bounds.width - itemSize.width / 2 - spacing / 2
-        attributes.center = CGPoint(x: topCardMidX - spacing * CGFloat(visibleItemsCount - visibleIndex), y: collectionView.bounds.midY)
-        attributes.zIndex = visibleIndex
+        let visibleIndex = indexPath.item - currentIndex
+        let topCardMidX = collectionView.contentOffset.x + itemSize.width / 2 + spacing / 2
+        attributes.center = CGPoint(x: topCardMidX + spacing * CGFloat(visibleIndex), y: collectionView.bounds.midY)
+        attributes.zIndex = numberOfItems - indexPath.item
         
         let offset = CGFloat(Int(collectionView.contentOffset.x) % Int(collectionView.bounds.width))
         let offsetProgress = CGFloat(offset) / collectionView.bounds.width
         let scale = parallaxProgress(for: visibleIndex, offsetProgress, minScale)
         attributes.transform = CGAffineTransform(scaleX: scale, y: scale)
         
-        switch visibleIndex {
-        case visibleItemsCount + 1:
-            attributes.center.x += collectionView.bounds.width - offset - spacing
-        default:
-            attributes.center.x -= spacing * offsetProgress
+        let rate: CGFloat = offsetProgress <= 0 ? 1 : 10
+        if visibleIndex == 0 {
+            attributes.center.x -= spacing * offsetProgress * rate
+        } else {
+            attributes.center.x -= spacing * offsetProgress * rate * 0.1
         }
+//        if maxVisibleIndex == indexPath.item {
+        let progress = parallaxProgress(for: visibleIndex, offsetProgress)
+//            delegate?.transition(indexPath: indexPath, progress: progress)
+//        }
+        attributes.alpha = progress
         return attributes
     }
     
     private func parallaxProgress(for visibleIndex: Int, _ offsetProgress: CGFloat, _ minimum: CGFloat = 0) -> CGFloat {
         let step = (1.0 - minimum) / CGFloat(visibleItemsCount)
-        return 1.0 - CGFloat(visibleItemsCount - visibleIndex) * step - step * offsetProgress
+        return 1.0 - CGFloat(visibleIndex) * step + step * offsetProgress
     }
 }

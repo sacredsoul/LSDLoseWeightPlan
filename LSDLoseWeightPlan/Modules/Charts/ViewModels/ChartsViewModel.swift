@@ -25,10 +25,10 @@ class ChartsViewModel {
         reloadAction
             .flatMapLatest { _ -> Observable<[MonthSectionModel]> in
                 let section = MonthSectionModel(items: [
-                    MonthItem(image: UIImage(color: UIColor.random, size: CGSize(width: 1, height: 1)), title: "2020年12月"),
-                    MonthItem(image: UIImage(color: UIColor.random, size: CGSize(width: 1, height: 1)), title: "2020年11月"),
-                    MonthItem(image: UIImage(color: UIColor.random, size: CGSize(width: 1, height: 1)), title: "2020年10月"),
-                    MonthItem(image: UIImage(color: UIColor.random, size: CGSize(width: 1, height: 1)), title: "2020年09月"),
+                    MonthItem(image: UIImage(color: UIColor.blue, size: CGSize(width: 1, height: 1)), title: "2020年12月"),
+                    MonthItem(image: UIImage(color: UIColor.blue, size: CGSize(width: 1, height: 1)), title: "2020年11月"),
+                    MonthItem(image: UIImage(color: UIColor.blue, size: CGSize(width: 1, height: 1)), title: "2020年10月"),
+                    MonthItem(image: UIImage(color: UIColor.blue, size: CGSize(width: 1, height: 1)), title: "2020年09月"),
                 ])
                 return Observable.just([section])
             }

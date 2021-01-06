@@ -32,14 +32,9 @@ class ChartsViewController: BaseViewController {
         viewModel.reloadAction.accept(())
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        collectionView.collectionViewLayout.invalidateLayout()
-        collectionView.layoutIfNeeded()
-    }
-    
     override func setupSubviews() {
+        let layout = collectionView.collectionViewLayout as! CardsLayout
+        layout.delegate = self
         collectionView.register(nibWithCellClass: CardCell.self)
     }
 
@@ -128,5 +123,13 @@ extension ChartsViewController: IAxisValueFormatter {
             return ""
         }
         return xLabels[value.int].date(withFormat: "yyyy-MM-dd")!.string(withFormat: "d")
+    }
+}
+
+extension ChartsViewController: CardsLayoutDelegate {
+    func transition(indexPath: IndexPath, progress: CGFloat) {
+        let cell = collectionView.dequeueReusableCell(withClass: CardCell.self, for: indexPath)
+        cell.contentView.alpha = progress
+        print("indexPath: \(indexPath)-------progress: \(progress)")
     }
 }
