@@ -15,8 +15,13 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setupSubviews()
-        self.setupBindings()
+        setupBaseConfig()
+        setupSubviews()
+        setupBindings()
+    }
+    
+    private func setupBaseConfig() {
+        view.backgroundColor = .backgroundColor
     }
     
     /// Override for setting up subviews

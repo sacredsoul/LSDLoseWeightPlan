@@ -29,16 +29,14 @@ class CardsLayout: UICollectionViewLayout {
     }
     
     var minScale: CGFloat = 0.8
-    var spacing: CGFloat = 35
+    var spacing: CGFloat = 36
     
     override var collectionViewContentSize: CGSize {
         return CGSize(width: collectionView.bounds.width * CGFloat(numberOfItems), height: collectionView.bounds.height)
     }
     
     var itemSize: CGSize {
-        let width = collectionView.bounds.width * 0.7
-        let height = width / 0.6
-        return CGSize(width: width, height: height)
+        return collectionView.bounds.size * 0.7
     }
     
     override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
@@ -61,7 +59,7 @@ class CardsLayout: UICollectionViewLayout {
         let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
         attributes.size = itemSize
         let visibleIndex = indexPath.item - currentIndex
-        let topCardMidX = collectionView.contentOffset.x + itemSize.width / 2 + spacing / 2
+        let topCardMidX = collectionView.contentOffset.x + itemSize.width / 2 + spacing
         attributes.center = CGPoint(x: topCardMidX + spacing * CGFloat(visibleIndex), y: collectionView.bounds.midY)
         attributes.zIndex = numberOfItems - indexPath.item
         
@@ -70,17 +68,20 @@ class CardsLayout: UICollectionViewLayout {
         let scale = parallaxProgress(for: visibleIndex, offsetProgress, minScale)
         attributes.transform = CGAffineTransform(scaleX: scale, y: scale)
         
-        let rate: CGFloat = offsetProgress <= 0 ? 1 : 10
-        if visibleIndex == 0 {
-            attributes.center.x -= spacing * offsetProgress * rate
-        } else {
-            attributes.center.x -= spacing * offsetProgress * rate * 0.1
+        var rate: CGFloat = 10
+        if offsetProgress <= 0 || currentIndex == numberOfItems - 1 {
+            rate = 1
         }
-//        if maxVisibleIndex == indexPath.item {
+        if visibleIndex != 0 {
+            rate = rate * 0.1
+        }
+        attributes.center.x -= spacing * offsetProgress * rate
+        
         let progress = parallaxProgress(for: visibleIndex, offsetProgress)
-//            delegate?.transition(indexPath: indexPath, progress: progress)
-//        }
         attributes.alpha = progress
+        
+        delegate?.transition(indexPath: indexPath, progress: progress)
+        
         return attributes
     }
     

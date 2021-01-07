@@ -1,5 +1,5 @@
 //
-//  ChartsViewController.swift
+//  MonthRecordsViewController.swift
 //  LSDLoseWeightPlan
 //
 //  Created by Sidi Liu on 2020/12/23.
@@ -8,7 +8,7 @@
 import UIKit
 import Charts
 
-class ChartsViewController: BaseViewController {
+class MonthRecordsViewController: BaseViewController {
 
     @IBOutlet weak var targetLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -18,11 +18,14 @@ class ChartsViewController: BaseViewController {
     
     let viewModel = ChartsViewModel()
     
+    private var fromRect: CGRect?
+    private var snapshotImage: UIImage?
     private var xLabels: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.delegate = self
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
@@ -55,6 +58,22 @@ class ChartsViewController: BaseViewController {
         viewModel.collectionDataSource
             .bind(to: collectionView.rx.items(dataSource: collectionDataSource))
             .disposed(by: disposeBag)
+        
+        collectionView.rx.itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                guard let `self` = self else { return }
+                let offset = CGPoint(x: self.collectionView.bounds.width * CGFloat(indexPath.item), y: 0)
+                if offset != self.collectionView.contentOffset {
+                    self.collectionView.setContentOffset(offset, animated: true)
+                }
+            }).disposed(by: disposeBag)
+        
+        collectionView.rx.modelSelected(MonthItem.self)
+            .subscribe(onNext: { [weak self] model in
+//                self?.snapshotImage = model.image
+//                let viewController = UIStoryboard.instantiateViewController(withClass: MonthChartsViewController.self, from: "Records")!
+//                self?.navigationController?.pushViewController(viewController, animated: true)
+            }).disposed(by: disposeBag)
     }
     
     func setupLineChartView() {
@@ -117,7 +136,7 @@ class ChartsViewController: BaseViewController {
     }
 }
 
-extension ChartsViewController: IAxisValueFormatter {
+extension MonthRecordsViewController: IAxisValueFormatter {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         guard value >= 0 && value.int < xLabels.count else {
             return ""
@@ -126,10 +145,37 @@ extension ChartsViewController: IAxisValueFormatter {
     }
 }
 
-extension ChartsViewController: CardsLayoutDelegate {
+extension MonthRecordsViewController: CardsLayoutDelegate {
     func transition(indexPath: IndexPath, progress: CGFloat) {
-        let cell = collectionView.dequeueReusableCell(withClass: CardCell.self, for: indexPath)
-        cell.contentView.alpha = progress
+        let cell = collectionView.cellForItem(at: indexPath) as? CardCell
+        cell?.updateShadow(progress: progress)
         print("indexPath: \(indexPath)-------progress: \(progress)")
+    }
+}
+
+extension MonthRecordsViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return PushTransition()
+    }
+}
+
+class PushTransition: NSObject, UIViewControllerAnimatedTransitioning {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 1
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        let fromVC = transitionContext.viewController(forKey: .from)!
+        let toVC = transitionContext.viewController(forKey: .to)!
+        let containerView = transitionContext.containerView
+        containerView.addSubview(fromVC.view)
+        containerView.addSubview(toVC.view)
+        toVC.view.alpha = 0
+        let duration = transitionDuration(using: transitionContext)
+        UIView.animateKeyframes(withDuration: duration, delay: 0, options: .calculationModeLinear) {
+            toVC.view.alpha = 1
+        } completion: { (finished) in
+            transitionContext.completeTransition(finished)
+        }
     }
 }

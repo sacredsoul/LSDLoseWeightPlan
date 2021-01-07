@@ -3,16 +3,17 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Charts View Controller-->
+        <!--Month Records View Controller-->
         <scene sceneID="bxv-6M-CaZ">
             <objects>
-                <viewController storyboardIdentifier="ChartsViewController" id="KYN-kN-9Ll" customClass="ChartsViewController" customModule="LSDLoseWeightPlan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MonthRecordsViewController" id="KYN-kN-9Ll" customClass="MonthRecordsViewController" customModule="LSDLoseWeightPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WpX-NG-3dw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +28,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="backgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Hfs-vv-RC9" secondAttribute="bottom" id="LUE-b9-UdW"/>
                                     <constraint firstAttribute="height" constant="80" id="YXh-kB-Dyo"/>
@@ -38,7 +39,7 @@
                             </view>
                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="flz-Ke-zS3">
                                 <rect key="frame" x="0.0" y="124" width="414" height="658"/>
-                                <color key="backgroundColor" red="0.14117647059999999" green="0.16078431369999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="backgroundColor"/>
                                 <collectionViewLayout key="collectionViewLayout" id="exz-aM-y8A" customClass="CardsLayout" customModule="LSDLoseWeightPlan" customModuleProvider="target"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cYf-hD-62G">
@@ -67,7 +68,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="backgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="JAE-6h-JJ5" secondAttribute="bottom" id="2u9-RM-TRZ"/>
                                     <constraint firstItem="6On-lh-dsj" firstAttribute="top" secondItem="6Nc-Vm-4ce" secondAttribute="top" id="Fal-eW-QAp"/>
@@ -81,7 +82,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="N2h-cW-B33"/>
-                        <color key="backgroundColor" red="0.14117647059999999" green="0.16078431369999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
                             <constraint firstItem="flz-Ke-zS3" firstAttribute="trailing" secondItem="N2h-cW-B33" secondAttribute="trailing" id="24d-Bw-BaQ"/>
                             <constraint firstItem="cdb-EI-PVy" firstAttribute="top" secondItem="N2h-cW-B33" secondAttribute="top" id="5Pt-ht-KwZ"/>
@@ -106,8 +107,42 @@
             </objects>
             <point key="canvasLocation" x="50.724637681159422" y="212.94642857142856"/>
         </scene>
+        <!--Month Charts View Controller-->
+        <scene sceneID="J0v-Jl-6l1">
+            <objects>
+                <viewController storyboardIdentifier="MonthChartsViewController" id="acd-wV-DLc" customClass="MonthChartsViewController" customModule="LSDLoseWeightPlan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dyf-Xp-jC5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qBv-fa-nqK">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="5Td-sW-bng"/>
+                                    <constraint firstAttribute="height" constant="500" id="xqR-9u-aIf"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cex-PX-jK0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qBv-fa-nqK" firstAttribute="centerX" secondItem="dyf-Xp-jC5" secondAttribute="centerX" id="U3c-fV-E7V"/>
+                            <constraint firstItem="qBv-fa-nqK" firstAttribute="top" secondItem="dyf-Xp-jC5" secondAttribute="top" id="YEl-8S-shr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="headImageView" destination="qBv-fa-nqK" id="Aph-tG-hoP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x13-Hd-3V2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="834.78260869565224" y="212.94642857142856"/>
+        </scene>
     </scenes>
     <resources>
+        <namedColor name="backgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

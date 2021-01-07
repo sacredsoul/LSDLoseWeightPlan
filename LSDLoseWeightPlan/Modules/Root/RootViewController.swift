@@ -25,7 +25,7 @@ class RootViewController: BaseViewController {
     func setupTabBarController() {
         let tabModels = [
             setupSubController(withClass: TargetViewController.self, title: "", selectedImageName: "GitHub", unselectedImageName: "GitHub-Light"),
-            setupSubController(withClass: ChartsViewController.self, title: "", selectedImageName: "GitHub", unselectedImageName: "GitHub-Light"),
+            setupSubController(withClass: MonthRecordsViewController.self, from: "Records", title: "", selectedImageName: "GitHub", unselectedImageName: "GitHub-Light"),
         ]
         
         let tabBarController = CustomTabBarController.initialize(tabs: tabModels)
@@ -34,8 +34,8 @@ class RootViewController: BaseViewController {
     }
     
     // MARK: - Handlers
-    private func setupSubController(withClass name: UIViewController.Type, title: String, selectedImageName: String? = nil, unselectedImageName: String? = nil) -> TabModel {
-        let viewController = UIStoryboard.instantiateViewController(withClass: name)!
+    private func setupSubController(withClass name: UIViewController.Type, from storyboardName: String? = nil, title: String, selectedImageName: String? = nil, unselectedImageName: String? = nil) -> TabModel {
+        let viewController = UIStoryboard.instantiateViewController(withClass: name, from: storyboardName)!
         let navigationController = BaseNavigationController(rootViewController: viewController)
         return TabModel(controller: navigationController, title: title, selectedImageName: selectedImageName, unselectedImageName: unselectedImageName)
     }
