@@ -20,6 +20,11 @@ struct Constants {
     }
 }
 
+struct NotificationName {
+    static var showTabBar: Notification.Name { Notification.Name("showTabBar") }
+    static var hideTabBar: Notification.Name { Notification.Name("hideTabBar") }
+}
+
 extension UIColor {
     static var backgroundColor: UIColor { UIColor(named: "backgroundColor") ?? #colorLiteral(red: 0.2235294118, green: 0.2470588235, blue: 0.3215686275, alpha: 1) }
     
@@ -31,18 +36,4 @@ extension UIColor {
     static var secondaryTextColor: UIColor { #colorLiteral(red: 0.6274509804, green: 0.6392156863, blue: 0.6666666667, alpha: 1) }
     static var placeholderColor: UIColor { #colorLiteral(red: 0.7529411765, green: 0.768627451, blue: 0.8, alpha: 1) }
     
-}
-
-extension UIFont {
-    static func helveticaNeue(ofSize size: CGFloat) -> UIFont? {
-        return UIFont(name: "HelveticaNeue", size: size)
-    }
-    
-    static func helveticaNeueMedium(ofSize size: CGFloat) -> UIFont? {
-        return UIFont(name: "HelveticaNeue-Medium", size: size)
-    }
-    
-    static func helveticaNeueBold(ofSize size: CGFloat) -> UIFont? {
-        return UIFont(name: "HelveticaNeue-Bold", size: size)
-    }
 }

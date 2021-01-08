@@ -32,7 +32,7 @@ extension MonthSectionModel: AnimatableSectionModelType {
 }
 
 struct MonthItem: IdentifiableType, Equatable {
-    var image: UIImage
+    var imageUrl: String
     var title: String
     var emoji: String? = nil
     var identity: String {

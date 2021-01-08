@@ -1,5 +1,5 @@
 //
-//  ChartsViewModel.swift
+//  RecordsViewModel.swift
 //  LSDLoseWeightPlan
 //
 //  Created by Sidi Liu on 2020/12/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ChartsViewModel {
+class RecordsViewModel {
     let collectionDataSource = PublishRelay<[MonthSectionModel]>()
     let lineDataSource = PublishRelay<WeightModel>()
     let reloadAction = PublishRelay<Void>()
@@ -25,10 +25,10 @@ class ChartsViewModel {
         reloadAction
             .flatMapLatest { _ -> Observable<[MonthSectionModel]> in
                 let section = MonthSectionModel(items: [
-                    MonthItem(image: UIImage(color: UIColor.blue, size: CGSize(width: 1, height: 1)), title: "2020年12月"),
-                    MonthItem(image: UIImage(color: UIColor.blue, size: CGSize(width: 1, height: 1)), title: "2020年11月"),
-                    MonthItem(image: UIImage(color: UIColor.blue, size: CGSize(width: 1, height: 1)), title: "2020年10月"),
-                    MonthItem(image: UIImage(color: UIColor.blue, size: CGSize(width: 1, height: 1)), title: "2020年09月"),
+                    MonthItem(imageUrl: "https://img.mp.itc.cn/upload/20161125/94f1c0cf2dde449abd701004b231daf0_th.jpeg", title: "2020年12月"),
+                    MonthItem(imageUrl: "https://img.mp.itc.cn/upload/20161125/94f1c0cf2dde449abd701004b231daf0_th.jpeg", title: "2020年11月"),
+                    MonthItem(imageUrl: "https://img.mp.itc.cn/upload/20161125/94f1c0cf2dde449abd701004b231daf0_th.jpeg", title: "2020年10月"),
+                    MonthItem(imageUrl: "https://img.mp.itc.cn/upload/20161125/94f1c0cf2dde449abd701004b231daf0_th.jpeg", title: "2020年09月"),
                 ])
                 return Observable.just([section])
             }

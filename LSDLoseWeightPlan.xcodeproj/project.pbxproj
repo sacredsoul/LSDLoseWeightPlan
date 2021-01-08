@@ -19,6 +19,9 @@
 		5E4F422E25930B4E0063C1D5 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F420A25930B4E0063C1D5 /* CustomTabBar.swift */; };
 		5E4F422F25930B4E0063C1D5 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F420B25930B4E0063C1D5 /* CustomTabBarController.swift */; };
 		5E4F423025930B4E0063C1D5 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F420C25930B4E0063C1D5 /* BaseNavigationController.swift */; };
+		5E6E490E25A83CA300CB5A96 /* MonthDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6E490C25A83CA300CB5A96 /* MonthDescriptionCell.swift */; };
+		5E6E490F25A83CA300CB5A96 /* MonthDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E6E490D25A83CA300CB5A96 /* MonthDescriptionCell.xib */; };
+		5E6E491225A8456C00CB5A96 /* RecordsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E839F2E2593328500815F43 /* RecordsViewModel.swift */; };
 		5E839EFE25931ADA00815F43 /* RxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E839EFB25931ADA00815F43 /* RxCollectionViewCell.swift */; };
 		5E839EFF25931ADA00815F43 /* RxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E839EFD25931ADA00815F43 /* RxTableViewCell.swift */; };
 		5E839F0425931AED00815F43 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E839F0225931AED00815F43 /* ViewExtensions.swift */; };
@@ -26,7 +29,6 @@
 		5E839F0B2593224D00815F43 /* TargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E839F0A2593224D00815F43 /* TargetViewController.swift */; };
 		5E839F0E259323F500815F43 /* TargetViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E839F0D259323F500815F43 /* TargetViewController.storyboard */; };
 		5E839F2C2593321F00815F43 /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F41DA25930B330063C1D5 /* GitHubAPI.swift */; };
-		5E839F2F2593328500815F43 /* ChartsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E839F2E2593328500815F43 /* ChartsViewModel.swift */; };
 		5E839F322593337E00815F43 /* WeightModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E839F312593337E00815F43 /* WeightModel.swift */; };
 		5E839F382593356800815F43 /* WeightResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E839F34259334D500815F43 /* WeightResponseModel.swift */; };
 		5E83A18E259D60D900815F43 /* MonthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E83A18D259D60D900815F43 /* MonthModel.swift */; };
@@ -36,6 +38,8 @@
 		5EAB14E325A6D19B00DBA4EC /* MonthRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E839F1225932B0F00815F43 /* MonthRecordsViewController.swift */; };
 		5EAB150A25A6D2A000DBA4EC /* MonthChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAB150925A6D2A000DBA4EC /* MonthChartsViewController.swift */; };
 		5EAB150D25A6D31A00DBA4EC /* Records.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E839F1525932B2700815F43 /* Records.storyboard */; };
+		5EAB153F25A7EA7900DBA4EC /* MonthDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAB153E25A7EA7900DBA4EC /* MonthDescriptionView.swift */; };
+		5EAB154225A7EB5900DBA4EC /* MonthDescriptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EAB154125A7EB5900DBA4EC /* MonthDescriptionView.xib */; };
 		847CD4DCFC0C018977DEA440 /* Pods_LSDLoseWeightPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5C23F921C5F35546F1C74C /* Pods_LSDLoseWeightPlan.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +60,8 @@
 		5E4F420A25930B4E0063C1D5 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		5E4F420B25930B4E0063C1D5 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		5E4F420C25930B4E0063C1D5 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		5E6E490C25A83CA300CB5A96 /* MonthDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthDescriptionCell.swift; sourceTree = "<group>"; };
+		5E6E490D25A83CA300CB5A96 /* MonthDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthDescriptionCell.xib; sourceTree = "<group>"; };
 		5E839EFB25931ADA00815F43 /* RxCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCollectionViewCell.swift; sourceTree = "<group>"; };
 		5E839EFD25931ADA00815F43 /* RxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxTableViewCell.swift; sourceTree = "<group>"; };
 		5E839F0225931AED00815F43 /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
@@ -64,7 +70,7 @@
 		5E839F0D259323F500815F43 /* TargetViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TargetViewController.storyboard; sourceTree = "<group>"; };
 		5E839F1225932B0F00815F43 /* MonthRecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthRecordsViewController.swift; sourceTree = "<group>"; };
 		5E839F1525932B2700815F43 /* Records.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Records.storyboard; sourceTree = "<group>"; };
-		5E839F2E2593328500815F43 /* ChartsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewModel.swift; sourceTree = "<group>"; };
+		5E839F2E2593328500815F43 /* RecordsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewModel.swift; sourceTree = "<group>"; };
 		5E839F312593337E00815F43 /* WeightModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightModel.swift; sourceTree = "<group>"; };
 		5E839F34259334D500815F43 /* WeightResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightResponseModel.swift; sourceTree = "<group>"; };
 		5E83A18D259D60D900815F43 /* MonthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthModel.swift; sourceTree = "<group>"; };
@@ -72,6 +78,8 @@
 		5E83A198259D9A0100815F43 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		5E83A199259D9A0100815F43 /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 		5EAB150925A6D2A000DBA4EC /* MonthChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthChartsViewController.swift; sourceTree = "<group>"; };
+		5EAB153E25A7EA7900DBA4EC /* MonthDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthDescriptionView.swift; sourceTree = "<group>"; };
+		5EAB154125A7EB5900DBA4EC /* MonthDescriptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthDescriptionView.xib; sourceTree = "<group>"; };
 		732F6EC0BC2D2DC3F0034D42 /* Pods-LSDLoseWeightPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSDLoseWeightPlan.debug.xcconfig"; path = "Target Support Files/Pods-LSDLoseWeightPlan/Pods-LSDLoseWeightPlan.debug.xcconfig"; sourceTree = "<group>"; };
 		BB5C23F921C5F35546F1C74C /* Pods_LSDLoseWeightPlan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LSDLoseWeightPlan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -246,7 +254,7 @@
 		5E839F1825932CE200815F43 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				5E839F2E2593328500815F43 /* ChartsViewModel.swift */,
+				5E839F2E2593328500815F43 /* RecordsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -267,6 +275,10 @@
 				5E83A192259D7A3300815F43 /* CardsLayout.swift */,
 				5E83A198259D9A0100815F43 /* CardCell.swift */,
 				5E83A199259D9A0100815F43 /* CardCell.xib */,
+				5EAB153E25A7EA7900DBA4EC /* MonthDescriptionView.swift */,
+				5EAB154125A7EB5900DBA4EC /* MonthDescriptionView.xib */,
+				5E6E490C25A83CA300CB5A96 /* MonthDescriptionCell.swift */,
+				5E6E490D25A83CA300CB5A96 /* MonthDescriptionCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -342,9 +354,11 @@
 				5E839F0E259323F500815F43 /* TargetViewController.storyboard in Resources */,
 				5E4F418D259304A60063C1D5 /* LaunchScreen.storyboard in Resources */,
 				5EAB150D25A6D31A00DBA4EC /* Records.storyboard in Resources */,
+				5E6E490F25A83CA300CB5A96 /* MonthDescriptionCell.xib in Resources */,
 				5E83A19B259D9A0100815F43 /* CardCell.xib in Resources */,
 				5E4F418A259304A60063C1D5 /* Assets.xcassets in Resources */,
 				5E4F422D25930B4E0063C1D5 /* CustomTabBarController.storyboard in Resources */,
+				5EAB154225A7EB5900DBA4EC /* MonthDescriptionView.xib in Resources */,
 				5E4F4188259304A50063C1D5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,7 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E839EFF25931ADA00815F43 /* RxTableViewCell.swift in Sources */,
-				5E839F2F2593328500815F43 /* ChartsViewModel.swift in Sources */,
+				5EAB153F25A7EA7900DBA4EC /* MonthDescriptionView.swift in Sources */,
 				5E839F322593337E00815F43 /* WeightModel.swift in Sources */,
 				5E83A196259D7A7100815F43 /* CardsLayout.swift in Sources */,
 				5E4F422C25930B4E0063C1D5 /* BaseViewController.swift in Sources */,
@@ -412,6 +426,8 @@
 				5E839F0525931AED00815F43 /* GlobalConstants.swift in Sources */,
 				5E4F422F25930B4E0063C1D5 /* CustomTabBarController.swift in Sources */,
 				5E839F382593356800815F43 /* WeightResponseModel.swift in Sources */,
+				5E6E490E25A83CA300CB5A96 /* MonthDescriptionCell.swift in Sources */,
+				5E6E491225A8456C00CB5A96 /* RecordsViewModel.swift in Sources */,
 				5E4F422B25930B4E0063C1D5 /* RootViewController.swift in Sources */,
 				5E4F41DD25930B330063C1D5 /* APIManager.swift in Sources */,
 				5E4F4181259304A50063C1D5 /* AppDelegate.swift in Sources */,

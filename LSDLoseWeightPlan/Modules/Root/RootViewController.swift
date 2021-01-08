@@ -11,10 +11,25 @@ import SwiftUI
 /// Root of all other business controllers
 class RootViewController: BaseViewController {
     
+    var tabController: CustomTabBarController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupSplashViewController()
+    }
+    
+    override func setupBindings() {
+        NotificationCenter.default.rx
+            .notification(NotificationName.showTabBar)
+            .subscribe(onNext: { [weak self] _ in
+                self?.tabController?.setTabBarHidden(false, animated: true)
+            }).disposed(by: disposeBag)
+        NotificationCenter.default.rx
+            .notification(NotificationName.hideTabBar)
+            .subscribe(onNext: { [weak self] _ in
+                self?.tabController?.setTabBarHidden(true, animated: true)
+            }).disposed(by: disposeBag)
     }
     
     /// Add logic here to custom splashing controller
@@ -29,6 +44,7 @@ class RootViewController: BaseViewController {
         ]
         
         let tabBarController = CustomTabBarController.initialize(tabs: tabModels)
+        self.tabController = tabBarController
         addChild(tabBarController)
         view.addSubview(tabBarController.view)
     }

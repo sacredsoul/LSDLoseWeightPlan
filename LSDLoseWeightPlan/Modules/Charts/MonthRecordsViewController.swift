@@ -6,32 +6,32 @@
 //
 
 import UIKit
+import Kingfisher
 import Charts
 
 class MonthRecordsViewController: BaseViewController {
 
     @IBOutlet weak var targetLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var emojiLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var monthView: MonthDescriptionView!
     var lineChartView: LineChartView!
     
-    let viewModel = ChartsViewModel()
+    let viewModel = RecordsViewModel()
     
-    private var fromRect: CGRect?
-    private var snapshotImage: UIImage?
+    var fromRect: CGRect?
+    var snapshotImage: UIImage?
     private var xLabels: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.delegate = self
-        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        navigationController?.delegate = self
+        navigationController?.setNavigationBarHidden(true, animated: true)
         viewModel.reloadAction.accept(())
     }
     
@@ -51,7 +51,7 @@ class MonthRecordsViewController: BaseViewController {
         
         let collectionDataSource = RxCollectionViewSectionedAnimatedDataSource<MonthSectionModel> { (dataSource, collectionView, indexPath, item) -> UICollectionViewCell in
             let cell = collectionView.dequeueReusableCell(withClass: CardCell.self, for: indexPath)
-            cell.imageView.image = item.image
+            cell.imageView.kf.setImage(with: URL(string: item.imageUrl))
             return cell
         }
         
@@ -65,15 +65,16 @@ class MonthRecordsViewController: BaseViewController {
                 let offset = CGPoint(x: self.collectionView.bounds.width * CGFloat(indexPath.item), y: 0)
                 if offset != self.collectionView.contentOffset {
                     self.collectionView.setContentOffset(offset, animated: true)
+                    return
                 }
+                let cell = self.collectionView.cellForItem(at: indexPath)! as! CardCell
+                self.fromRect = self.collectionView.convert(cell.frame, to: nil)
+                self.snapshotImage = cell.imageView.image
+                let viewController = UIStoryboard.instantiateViewController(withClass: MonthChartsViewController.self, from: "Records")!
+                viewController.image = self.snapshotImage
+                self.navigationController?.pushViewController(viewController, animated: true)
             }).disposed(by: disposeBag)
         
-        collectionView.rx.modelSelected(MonthItem.self)
-            .subscribe(onNext: { [weak self] model in
-//                self?.snapshotImage = model.image
-//                let viewController = UIStoryboard.instantiateViewController(withClass: MonthChartsViewController.self, from: "Records")!
-//                self?.navigationController?.pushViewController(viewController, animated: true)
-            }).disposed(by: disposeBag)
     }
     
     func setupLineChartView() {
@@ -155,27 +156,62 @@ extension MonthRecordsViewController: CardsLayoutDelegate {
 
 extension MonthRecordsViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return PushTransition()
+        if operation == .push {
+            return PushTransition()
+        }
+        return nil
     }
 }
 
 class PushTransition: NSObject, UIViewControllerAnimatedTransitioning {
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 1
+        return 0.2
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        let fromVC = transitionContext.viewController(forKey: .from)!
-        let toVC = transitionContext.viewController(forKey: .to)!
+        guard let fromVC = transitionContext.viewController(forKey: .from) as? MonthRecordsViewController,
+              let fromRect = fromVC.fromRect,
+              let image = fromVC.snapshotImage,
+              let toVC = transitionContext.viewController(forKey: .to) as? MonthChartsViewController else {
+            return
+        }
+        
+        fromVC.monthView.isHidden = true
+        
+        let imageView = UIImageView(frame: fromRect)
+        imageView.image = image
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 10
+        imageView.layer.masksToBounds = true
+        
+        let monthView = MonthDescriptionView(frame: fromVC.monthView.frame)
+        
         let containerView = transitionContext.containerView
-        containerView.addSubview(fromVC.view)
         containerView.addSubview(toVC.view)
+        containerView.addSubview(imageView)
+        containerView.addSubview(monthView)
+        
         toVC.view.alpha = 0
         let duration = transitionDuration(using: transitionContext)
-        UIView.animateKeyframes(withDuration: duration, delay: 0, options: .calculationModeLinear) {
-            toVC.view.alpha = 1
+        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseIn) {
+            imageView.frame = toVC.originFrame
+            monthView.frame = CGRect(x: 0, y: 500, width: Constants.screenWidth, height: 80)
         } completion: { (finished) in
+            fromVC.monthView.isHidden = false
+            toVC.view.alpha = 1
+            imageView.removeFromSuperview()
+            monthView.removeFromSuperview()
             transitionContext.completeTransition(finished)
         }
+    }
+}
+
+class PopTransition: NSObject, UIViewControllerAnimatedTransitioning {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 0.4
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        
     }
 }
