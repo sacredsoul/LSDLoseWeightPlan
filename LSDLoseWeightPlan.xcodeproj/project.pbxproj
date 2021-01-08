@@ -154,7 +154,7 @@
 			children = (
 				5E4F420425930B4E0063C1D5 /* Root */,
 				5E839F0925931F1600815F43 /* Target */,
-				5E839F102593267F00815F43 /* Charts */,
+				5E839F102593267F00815F43 /* Records */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -238,7 +238,7 @@
 			path = Target;
 			sourceTree = "<group>";
 		};
-		5E839F102593267F00815F43 /* Charts */ = {
+		5E839F102593267F00815F43 /* Records */ = {
 			isa = PBXGroup;
 			children = (
 				5E839F1525932B2700815F43 /* Records.storyboard */,
@@ -248,7 +248,7 @@
 				5E839F1925932CEE00815F43 /* Models */,
 				5E839F1825932CE200815F43 /* ViewModels */,
 			);
-			path = Charts;
+			path = Records;
 			sourceTree = "<group>";
 		};
 		5E839F1825932CE200815F43 /* ViewModels */ = {
