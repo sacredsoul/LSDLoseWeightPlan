@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4521C09725AABAF20012D0E7 /* AnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4521C09625AABAF20012D0E7 /* AnimatedTransition.swift */; };
 		5E4F4181259304A50063C1D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F4180259304A50063C1D5 /* AppDelegate.swift */; };
 		5E4F4183259304A50063C1D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F4182259304A50063C1D5 /* SceneDelegate.swift */; };
 		5E4F4188259304A50063C1D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E4F4186259304A50063C1D5 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		32B740839EC127B76CF2C100 /* Pods-LSDLoseWeightPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSDLoseWeightPlan.release.xcconfig"; path = "Target Support Files/Pods-LSDLoseWeightPlan/Pods-LSDLoseWeightPlan.release.xcconfig"; sourceTree = "<group>"; };
+		4521C09625AABAF20012D0E7 /* AnimatedTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTransition.swift; sourceTree = "<group>"; };
 		5E4F417D259304A50063C1D5 /* LSDLoseWeightPlan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSDLoseWeightPlan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E4F4180259304A50063C1D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E4F4182259304A50063C1D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				5E839F1525932B2700815F43 /* Records.storyboard */,
 				5E839F1225932B0F00815F43 /* MonthRecordsViewController.swift */,
 				5EAB150925A6D2A000DBA4EC /* MonthChartsViewController.swift */,
+				4521C09625AABAF20012D0E7 /* AnimatedTransition.swift */,
 				5E83A188259D5FDF00815F43 /* Views */,
 				5E839F1925932CEE00815F43 /* Models */,
 				5E839F1825932CE200815F43 /* ViewModels */,
@@ -416,6 +419,7 @@
 				5EAB153F25A7EA7900DBA4EC /* MonthDescriptionView.swift in Sources */,
 				5E839F322593337E00815F43 /* WeightModel.swift in Sources */,
 				5E83A196259D7A7100815F43 /* CardsLayout.swift in Sources */,
+				4521C09725AABAF20012D0E7 /* AnimatedTransition.swift in Sources */,
 				5E4F422C25930B4E0063C1D5 /* BaseViewController.swift in Sources */,
 				5E839F2C2593321F00815F43 /* GitHubAPI.swift in Sources */,
 				5EAB14E325A6D19B00DBA4EC /* MonthRecordsViewController.swift in Sources */,
@@ -584,6 +588,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CV78BKBJ5Y;
 				INFOPLIST_FILE = LSDLoseWeightPlan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -603,6 +608,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CV78BKBJ5Y;
 				INFOPLIST_FILE = LSDLoseWeightPlan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

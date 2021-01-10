@@ -12,9 +12,12 @@ class MonthChartsViewController: BaseViewController {
     @IBOutlet weak var headImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
-    var image: UIImage!
-    let originFrame = CGRect(x: 0, y: -40, width: Constants.screenWidth, height: 600)
+    // MARK: - Public properties
+    var headImage: UIImage?
+    var toImageViewRect = CGRect(x: 0, y: -40, width: Constants.screenWidth, height: 600)
+    var toMonthViewRect = CGRect(x: 0, y: 500, width: Constants.screenWidth, height: 80)
     
+    // MARK: - Private properties
     private let topInset: CGFloat = 500
     private let maxPullDownDistance: CGFloat = 40
     private var lastOffsetY: CGFloat = -500
@@ -23,8 +26,8 @@ class MonthChartsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        headImageView.frame = originFrame
-        headImageView.image = image
+        headImageView.frame = toImageViewRect
+        headImageView.image = headImage
     }
     
     override func setupSubviews() {
@@ -73,6 +76,8 @@ extension MonthChartsViewController: UITableViewDelegate, UITableViewDataSource 
             headImageView.bounds = bounds
             lastOffsetY = offsetY
         case -Constants.screenHeight ..< end:
+            toImageViewRect = headImageView.frame
+            toMonthViewRect.origin.y = -end
             navigationController?.popViewController(animated: true)
         default:
             return
@@ -92,7 +97,7 @@ extension MonthChartsViewController: UITableViewDelegate, UITableViewDataSource 
             lastOffsetY = -topInset
             UIView.animate(withDuration: 0.2) { [weak self] in
                 guard let `self` = self else { return }
-                self.headImageView.frame = self.originFrame
+                self.headImageView.frame = self.toImageViewRect
             }
         default:
             return

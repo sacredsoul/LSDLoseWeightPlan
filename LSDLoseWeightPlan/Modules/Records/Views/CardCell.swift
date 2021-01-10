@@ -11,6 +11,12 @@ class CardCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        updateShadow(progress: 1)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

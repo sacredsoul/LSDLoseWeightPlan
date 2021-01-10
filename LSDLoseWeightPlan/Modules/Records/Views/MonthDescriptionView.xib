@@ -21,13 +21,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020年12月" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhA-xl-ICr">
-                    <rect key="frame" x="10.000000000000007" y="0.0" width="113.66666666666669" height="130"/>
+                    <rect key="frame" x="10.000000000000007" y="0.0" width="113.66666666666669" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="sVj-7Z-JU3"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🤪" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ArA-6Q-gE5">
-                    <rect key="frame" x="402" y="0.0" width="45" height="130"/>
+                    <rect key="frame" x="402" y="0.0" width="45" height="80"/>
                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -36,9 +39,9 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" name="backgroundColor"/>
             <constraints>
+                <constraint firstItem="ArA-6Q-gE5" firstAttribute="height" secondItem="YhA-xl-ICr" secondAttribute="height" id="Abj-R1-TEB"/>
                 <constraint firstItem="ArA-6Q-gE5" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="AmU-M4-NZF"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ArA-6Q-gE5" secondAttribute="bottom" id="GEU-wr-32f"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="YhA-xl-ICr" secondAttribute="bottom" id="Ikl-f7-OwJ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="YhA-xl-ICr" secondAttribute="bottom" id="Ikl-f7-OwJ"/>
                 <constraint firstItem="YhA-xl-ICr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="LEn-20-5DN"/>
                 <constraint firstItem="ArA-6Q-gE5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YhA-xl-ICr" secondAttribute="trailing" constant="10" id="Wuh-75-Qvj"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ArA-6Q-gE5" secondAttribute="trailing" constant="20" id="gHG-dN-cdt"/>
