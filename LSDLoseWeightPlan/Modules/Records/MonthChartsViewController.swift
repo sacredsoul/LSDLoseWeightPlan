@@ -13,6 +13,7 @@ class MonthChartsViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Public properties
+    var viewModel: ChartsViewModel!
     var headImage: UIImage?
     var toImageViewRect = CGRect(x: 0, y: -40, width: Constants.screenWidth, height: 600)
     var toMonthViewRect = CGRect(x: 0, y: 500, width: Constants.screenWidth, height: 80)
@@ -21,7 +22,6 @@ class MonthChartsViewController: BaseViewController {
     private let topInset: CGFloat = 500
     private let maxPullDownDistance: CGFloat = 40
     private var lastOffsetY: CGFloat = -500
-    private var didEndDragging = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,26 +34,24 @@ class MonthChartsViewController: BaseViewController {
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
         tableView.register(nibWithCellClass: MonthDescriptionCell.self)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.tableFooterView = UIView()
+        tableView.rx.setDelegate(self).disposed(by: disposeBag)
     }
     
-
+    override func setupBindings() {
+        let dataSource = RxTableViewSectionedReloadDataSource<WeightMonthModel> { (dataSource, tableView, indexPath, item) -> UITableViewCell in
+            let cell = tableView.dequeueReusableCell(withClass: MonthDescriptionCell.self, for: indexPath)
+            cell.monthView.monthLabel.text = dataSource[indexPath.section].month
+            cell.monthView.emojiLabel.text = dataSource[indexPath.section].emoji
+            return cell
+        }
+        viewModel.dataSource
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+    }
 }
 
-extension MonthChartsViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withClass: MonthDescriptionCell.self, for: indexPath)
-        
-        return cell
-    }
-    
-    
+extension MonthChartsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return .leastNormalMagnitude
     }
@@ -68,14 +66,14 @@ extension MonthChartsViewController: UITableViewDelegate, UITableViewDataSource 
         let end = start - maxPullDownDistance
         switch offsetY {
         case end ..< start:
-            if didEndDragging {
-                return
-            }
             var bounds = headImageView.bounds
             bounds.size.height -= lastOffsetY - offsetY
             headImageView.bounds = bounds
             lastOffsetY = offsetY
         case -Constants.screenHeight ..< end:
+            if scrollView.isDecelerating {
+                return
+            }
             toImageViewRect = headImageView.frame
             toMonthViewRect.origin.y = -end
             navigationController?.popViewController(animated: true)
@@ -84,24 +82,8 @@ extension MonthChartsViewController: UITableViewDelegate, UITableViewDataSource 
         }
     }
     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        didEndDragging = false
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        lastOffsetY = -topInset
+        self.headImageView.frame = self.toImageViewRect
     }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        didEndDragging = true
-        let start = -topInset
-        let end = start - maxPullDownDistance
-        switch scrollView.contentOffset.y {
-        case end ..< start:
-            lastOffsetY = -topInset
-            UIView.animate(withDuration: 0.2) { [weak self] in
-                guard let `self` = self else { return }
-                self.headImageView.frame = self.toImageViewRect
-            }
-        default:
-            return
-        }
-    }
-    
 }

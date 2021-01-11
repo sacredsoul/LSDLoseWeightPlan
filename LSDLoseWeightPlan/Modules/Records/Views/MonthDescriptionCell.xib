@@ -13,7 +13,7 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="136" id="KGk-i7-Jjw" customClass="MonthDescriptionCell" customModule="LSDLoseWeightPlan" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="411" height="136"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="411" height="136"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -26,13 +26,16 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="tKE-uB-Mai" secondAttribute="bottom" id="APg-tU-4GR"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tKE-uB-Mai" secondAttribute="bottom" id="APg-tU-4GR"/>
                     <constraint firstItem="tKE-uB-Mai" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ddc-9O-WaR"/>
                     <constraint firstAttribute="trailing" secondItem="tKE-uB-Mai" secondAttribute="trailing" id="LYy-6I-xpV"/>
                     <constraint firstItem="tKE-uB-Mai" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pa8-AS-DfA"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="monthView" destination="tKE-uB-Mai" id="sWv-de-jUf"/>
+            </connections>
             <point key="canvasLocation" x="206.52173913043481" y="118.52678571428571"/>
         </tableViewCell>
     </objects>

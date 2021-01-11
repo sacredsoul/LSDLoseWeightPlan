@@ -23,6 +23,7 @@
 		5E6E490E25A83CA300CB5A96 /* MonthDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6E490C25A83CA300CB5A96 /* MonthDescriptionCell.swift */; };
 		5E6E490F25A83CA300CB5A96 /* MonthDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E6E490D25A83CA300CB5A96 /* MonthDescriptionCell.xib */; };
 		5E6E491225A8456C00CB5A96 /* RecordsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E839F2E2593328500815F43 /* RecordsViewModel.swift */; };
+		5E6E492725ABDC8F00CB5A96 /* ChartsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6E492625ABDC8F00CB5A96 /* ChartsViewModel.swift */; };
 		5E839EFE25931ADA00815F43 /* RxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E839EFB25931ADA00815F43 /* RxCollectionViewCell.swift */; };
 		5E839EFF25931ADA00815F43 /* RxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E839EFD25931ADA00815F43 /* RxTableViewCell.swift */; };
 		5E839F0425931AED00815F43 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E839F0225931AED00815F43 /* ViewExtensions.swift */; };
@@ -64,6 +65,7 @@
 		5E4F420C25930B4E0063C1D5 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		5E6E490C25A83CA300CB5A96 /* MonthDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthDescriptionCell.swift; sourceTree = "<group>"; };
 		5E6E490D25A83CA300CB5A96 /* MonthDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthDescriptionCell.xib; sourceTree = "<group>"; };
+		5E6E492625ABDC8F00CB5A96 /* ChartsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewModel.swift; sourceTree = "<group>"; };
 		5E839EFB25931ADA00815F43 /* RxCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCollectionViewCell.swift; sourceTree = "<group>"; };
 		5E839EFD25931ADA00815F43 /* RxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxTableViewCell.swift; sourceTree = "<group>"; };
 		5E839F0225931AED00815F43 /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				5E839F2E2593328500815F43 /* RecordsViewModel.swift */,
+				5E6E492625ABDC8F00CB5A96 /* ChartsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				5E839F382593356800815F43 /* WeightResponseModel.swift in Sources */,
 				5E6E490E25A83CA300CB5A96 /* MonthDescriptionCell.swift in Sources */,
 				5E6E491225A8456C00CB5A96 /* RecordsViewModel.swift in Sources */,
+				5E6E492725ABDC8F00CB5A96 /* ChartsViewModel.swift in Sources */,
 				5E4F422B25930B4E0063C1D5 /* RootViewController.swift in Sources */,
 				5E4F41DD25930B330063C1D5 /* APIManager.swift in Sources */,
 				5E4F4181259304A50063C1D5 /* AppDelegate.swift in Sources */,

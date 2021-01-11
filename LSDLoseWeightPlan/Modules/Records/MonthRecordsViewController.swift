@@ -17,6 +17,7 @@ class MonthRecordsViewController: BaseViewController {
     var lineChartView: LineChartView!
     
     let viewModel = RecordsViewModel()
+    var dataSource: RxCollectionViewSectionedReloadDataSource<WeightModel>!
     
     var fromRect: CGRect?
     var headImage: UIImage?
@@ -49,15 +50,21 @@ class MonthRecordsViewController: BaseViewController {
 //                }
 //            }).disposed(by: disposeBag)
         
-        let collectionDataSource = RxCollectionViewSectionedAnimatedDataSource<MonthSectionModel> { (dataSource, collectionView, indexPath, item) -> UICollectionViewCell in
+        let collectionDataSource = RxCollectionViewSectionedReloadDataSource<WeightModel> { (dataSource, collectionView, indexPath, item) -> UICollectionViewCell in
             let cell = collectionView.dequeueReusableCell(withClass: CardCell.self, for: indexPath)
-            cell.imageView.kf.setImage(with: URL(string: item.imageUrl))
+            cell.imageView.kf.setImage(with: URL(string: "https://img.mp.itc.cn/upload/20161125/94f1c0cf2dde449abd701004b231daf0_th.jpeg"))
             return cell
         }
+        self.dataSource = collectionDataSource
         
         viewModel.collectionDataSource
             .bind(to: collectionView.rx.items(dataSource: collectionDataSource))
             .disposed(by: disposeBag)
+        
+        viewModel.collectionDataSource
+            .subscribe(onNext: { [weak self] dataSource in
+                self?.targetLabel.text = dataSource.first?.target
+            }).disposed(by: disposeBag)
         
         collectionView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
@@ -71,6 +78,7 @@ class MonthRecordsViewController: BaseViewController {
                 self.fromRect = self.collectionView.convert(cell.frame, to: nil)
                 self.headImage = cell.imageView.image
                 let viewController = UIStoryboard.instantiateViewController(withClass: MonthChartsViewController.self, from: "Records")!
+                viewController.viewModel = ChartsViewModel(dataSource: self.dataSource[indexPath.section].items[indexPath.item])
                 viewController.headImage = self.headImage
                 self.navigationController?.pushViewController(viewController, animated: true)
             }).disposed(by: disposeBag)
@@ -150,6 +158,14 @@ extension MonthRecordsViewController: CardsLayoutDelegate {
     func transition(indexPath: IndexPath, progress: CGFloat) {
         let cell = collectionView.cellForItem(at: indexPath) as? CardCell
         cell?.updateShadow(progress: progress)
+    }
+    
+    func transition(fromIndexPath: IndexPath, toIndexPath: IndexPath, progress: CGFloat) {
+        monthView.transition(month: dataSource[fromIndexPath.section].items[fromIndexPath.item].month,
+                             nextMonth: dataSource[toIndexPath.section].items[toIndexPath.item].month,
+                             emoji: dataSource[fromIndexPath.section].items[fromIndexPath.item].emoji,
+                             nextEmoji: dataSource[toIndexPath.section].items[toIndexPath.item].emoji,
+                             progress: progress)
     }
 }
 

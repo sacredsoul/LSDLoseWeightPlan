@@ -9,6 +9,7 @@ import UIKit
 
 protocol CardsLayoutDelegate: class {
     func transition(indexPath: IndexPath, progress: CGFloat)
+    func transition(fromIndexPath: IndexPath, toIndexPath: IndexPath, progress: CGFloat)
 }
 
 class CardsLayout: UICollectionViewLayout {
@@ -81,6 +82,10 @@ class CardsLayout: UICollectionViewLayout {
         attributes.alpha = progress
         
         delegate?.transition(indexPath: indexPath, progress: progress)
+        if visibleIndex == 0 && numberOfItems - 1 > currentIndex {
+            let toIndexPath = IndexPath(item: indexPath.item + 1, section: 0)
+            delegate.transition(fromIndexPath: indexPath, toIndexPath: toIndexPath, progress: 1 - offsetProgress)
+        }
         
         return attributes
     }

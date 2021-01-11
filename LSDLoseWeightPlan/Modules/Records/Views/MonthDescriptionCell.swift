@@ -9,6 +9,8 @@ import UIKit
 
 class MonthDescriptionCell: UITableViewCell {
 
+    @IBOutlet weak var monthView: MonthDescriptionView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

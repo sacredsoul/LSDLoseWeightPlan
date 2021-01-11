@@ -28,6 +28,8 @@ class AnimatedPushTransition: NSObject, UIViewControllerAnimatedTransitioning {
         
         let monthView = MonthDescriptionView(frame: fromVC.monthView.frame)
         monthView.frame.size.height = fromVC.monthView.frame.maxY - toVC.toMonthViewRect.minY
+        monthView.monthLabel.text = fromVC.monthView.monthLabel.text
+        monthView.emojiLabel.text = fromVC.monthView.emojiLabel.text
         
         let containerView = transitionContext.containerView
         containerView.addSubview(imageView)
