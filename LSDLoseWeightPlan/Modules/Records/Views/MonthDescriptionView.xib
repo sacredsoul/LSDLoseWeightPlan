@@ -44,10 +44,10 @@
             <constraints>
                 <constraint firstItem="ArA-6Q-gE5" firstAttribute="height" secondItem="YhA-xl-ICr" secondAttribute="height" id="7QH-AM-qgq"/>
                 <constraint firstItem="ArA-6Q-gE5" firstAttribute="leading" secondItem="YhA-xl-ICr" secondAttribute="trailing" constant="20" id="9TH-rY-rJE"/>
-                <constraint firstItem="ArA-6Q-gE5" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="AmU-M4-NZF"/>
-                <constraint firstItem="YhA-xl-ICr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="LEn-20-5DN"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ArA-6Q-gE5" secondAttribute="trailing" constant="20" id="gHG-dN-cdt"/>
-                <constraint firstItem="YhA-xl-ICr" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ncp-zK-apM"/>
+                <constraint firstItem="ArA-6Q-gE5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AmU-M4-NZF"/>
+                <constraint firstItem="YhA-xl-ICr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="LEn-20-5DN"/>
+                <constraint firstAttribute="trailing" secondItem="ArA-6Q-gE5" secondAttribute="trailing" constant="20" id="gHG-dN-cdt"/>
+                <constraint firstItem="YhA-xl-ICr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ncp-zK-apM"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="151" y="314"/>
