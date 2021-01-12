@@ -52,7 +52,7 @@ class MonthRecordsViewController: BaseViewController {
         
         let collectionDataSource = RxCollectionViewSectionedReloadDataSource<WeightModel> { (dataSource, collectionView, indexPath, item) -> UICollectionViewCell in
             let cell = collectionView.dequeueReusableCell(withClass: CardCell.self, for: indexPath)
-            cell.imageView.kf.setImage(with: URL(string: "https://img.mp.itc.cn/upload/20161125/94f1c0cf2dde449abd701004b231daf0_th.jpeg"))
+            cell.imageView.image = #imageLiteral(resourceName: "placeholder")
             return cell
         }
         self.dataSource = collectionDataSource

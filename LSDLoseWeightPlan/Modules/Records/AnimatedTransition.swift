@@ -15,13 +15,12 @@ class AnimatedPushTransition: NSObject, UIViewControllerAnimatedTransitioning {
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from) as? MonthRecordsViewController,
               let fromRect = fromVC.fromRect,
-              let headImage = fromVC.headImage,
               let toVC = transitionContext.viewController(forKey: .to) as? MonthChartsViewController else {
             return
         }
         
         let imageView = UIImageView(frame: fromRect)
-        imageView.image = headImage
+        imageView.image = fromVC.headImage
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 10
         imageView.layer.masksToBounds = true
@@ -68,6 +67,8 @@ class AnimatedPopTransition: NSObject, UIViewControllerAnimatedTransitioning {
         
         let monthView = MonthDescriptionView(frame: fromVC.toMonthViewRect)
         monthView.frame.size.height = toVC.monthView.frame.maxY - fromVC.toMonthViewRect.minY
+        monthView.monthLabel.text = toVC.monthView.monthLabel.text
+        monthView.emojiLabel.text = toVC.monthView.emojiLabel.text
         
         let containerView = transitionContext.containerView
         containerView.addSubview(toVC.view)

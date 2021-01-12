@@ -54,11 +54,15 @@ class MonthDescriptionView: UIView {
         rightLabel?.removeFromSuperview()
         
         let upperLabel = copyLabel(monthLabel)
+        upperLabel.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
+        upperLabel.layer.position = CGPoint(x: monthLabel.frame.minX, y: upperLabel.layer.position.y)
         upperLabel.text = month
         self.upperLabel = upperLabel
         addSubview(upperLabel)
         
         let lowerLabel = copyLabel(monthLabel)
+        lowerLabel.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
+        lowerLabel.layer.position = CGPoint(x: monthLabel.frame.minX, y: lowerLabel.layer.position.y)
         lowerLabel.text = nextMonth
         self.lowerLabel = lowerLabel
         addSubview(lowerLabel)
@@ -73,21 +77,22 @@ class MonthDescriptionView: UIView {
         self.rightLabel = rightLabel
         addSubview(rightLabel)
         
-        upperLabel.center = CGPoint(x: monthLabel.center.x, y: monthLabel.center.y - 20)
+        upperLabel.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 6)
+        lowerLabel.transform = CGAffineTransform(rotationAngle: 0)
         upperLabel.alpha = 0
         lowerLabel.alpha = 1
         
         leftLabel.center = CGPoint(x: emojiLabel.center.x - 30, y: emojiLabel.center.y)
         leftLabel.alpha = 0
         rightLabel.alpha = 1
-        leftLabel.transform = emojiLabel.transform.scaledBy(x: 0.5, y: 0.5)
-        rightLabel.transform = emojiLabel.transform
+        leftLabel.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        rightLabel.transform = CGAffineTransform(scaleX: 1, y: 1)
         
         animator?.stopAnimation(true)
         animator = UIViewPropertyAnimator(duration: 1, curve: .linear) { [weak self] in
             guard let `self` = self else { return }
-            upperLabel.center = self.monthLabel.center
-            lowerLabel.center = CGPoint(x: self.monthLabel.center.x, y: self.monthLabel.center.y + 20)
+            upperLabel.transform = CGAffineTransform(rotationAngle: 0)
+            lowerLabel.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 6)
             upperLabel.alpha = 1
             lowerLabel.alpha = 0
             
@@ -95,8 +100,8 @@ class MonthDescriptionView: UIView {
             rightLabel.center = CGPoint(x: self.emojiLabel.center.x + 30, y: self.emojiLabel.center.y)
             leftLabel.alpha = 1
             rightLabel.alpha = 0
-            leftLabel.transform = self.emojiLabel.transform
-            rightLabel.transform = self.emojiLabel.transform.scaledBy(x: 0.5, y: 0.5)
+            leftLabel.transform = CGAffineTransform(scaleX: 1, y: 1)
+            rightLabel.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         }
         animator?.fractionComplete = progress
     }
