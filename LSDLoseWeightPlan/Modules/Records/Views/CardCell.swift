@@ -7,9 +7,11 @@
 
 import UIKit
 
-class CardCell: UICollectionViewCell {
+class CardCell: RxCollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
+    
+    var longPressAction = PublishRelay<Void>()
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -20,14 +22,26 @@ class CardCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setupSubviews()
         setupShadow()
     }
     
-    func setupSubviews() {
+    override func setupSubviews() {
         clipsToBounds = false
+        
+        let longPress = UILongPressGestureRecognizer()
+        imageView.addGestureRecognizer(longPress)
+        imageView.isUserInteractionEnabled = true
         imageView.layer.cornerRadius = 10
         imageView.layer.masksToBounds = true
+    }
+    
+    override func setupBindings() {
+        if let longPress = imageView.gestureRecognizers?.first {
+            longPress.rx.event
+                .subscribe(onNext: { [weak self] recognizer in
+                    self?.longPressAction.accept(())
+                }).disposed(by: disposeBag)
+        }
     }
 
     func setupShadow() {

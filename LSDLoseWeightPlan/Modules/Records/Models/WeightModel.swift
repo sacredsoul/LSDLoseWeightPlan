@@ -27,6 +27,7 @@ extension WeightModel: SectionModelType {
 struct WeightMonthModel {
     var month: String = ""
     var emoji: String = ""
+    var imagePath: String? = nil
     var days: [WeightDayModel] = []
 }
 

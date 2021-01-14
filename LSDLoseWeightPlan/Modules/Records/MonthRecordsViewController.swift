@@ -14,6 +14,7 @@ class MonthRecordsViewController: BaseViewController {
     @IBOutlet weak var targetLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var monthView: MonthDescriptionView!
+    var imagePickerController: UIImagePickerController?
     var lineChartView: LineChartView!
     
     let viewModel = RecordsViewModel()
@@ -22,6 +23,8 @@ class MonthRecordsViewController: BaseViewController {
     var fromRect: CGRect?
     var headImage: UIImage?
     private var xLabels: [String] = []
+    private let currentMonth = PublishRelay<String>()
+    private let imagePath = PublishRelay<String>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +55,13 @@ class MonthRecordsViewController: BaseViewController {
         
         let collectionDataSource = RxCollectionViewSectionedReloadDataSource<WeightModel> { (dataSource, collectionView, indexPath, item) -> UICollectionViewCell in
             let cell = collectionView.dequeueReusableCell(withClass: CardCell.self, for: indexPath)
-            cell.imageView.image = #imageLiteral(resourceName: "placeholder")
+            cell.imageView.image = UIImage(contentsOfFile: item.imagePath ?? "") ?? #imageLiteral(resourceName: "placeholder")
+            cell.longPressAction
+                .subscribe(onNext: { [weak self] in
+                    self?.currentMonth.accept(item.month)
+                    self?.presentImagePickerController()
+                }).disposed(by: cell.disposeBag)
+                
             return cell
         }
         self.dataSource = collectionDataSource
@@ -83,6 +92,18 @@ class MonthRecordsViewController: BaseViewController {
                 self.navigationController?.pushViewController(viewController, animated: true)
             }).disposed(by: disposeBag)
         
+        imagePath
+            .withLatestFrom(Observable.combineLatest(currentMonth, imagePath))
+            .bind(to: viewModel.saveImageUrlAction)
+            .disposed(by: disposeBag)
+    }
+    
+    func presentImagePickerController() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
+        self.imagePickerController = imagePickerController
+        present(imagePickerController, animated: true, completion: nil)
     }
     
     func setupLineChartView() {
@@ -179,5 +200,16 @@ extension MonthRecordsViewController: UINavigationControllerDelegate {
         default:
             return nil
         }
+    }
+}
+
+extension MonthRecordsViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let url = info[.imageURL] as? URL, let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last {
+            let toPath = path.appendingPathComponent(url.lastPathComponent)
+            try? FileManager().copyItem(at: url, to: URL(fileURLWithPath: toPath))
+            imagePath.accept(toPath)
+        }
+        picker.dismiss(animated: true, completion: nil)
     }
 }

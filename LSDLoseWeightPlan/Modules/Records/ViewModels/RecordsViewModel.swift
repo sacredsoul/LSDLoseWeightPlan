@@ -11,16 +11,30 @@ class RecordsViewModel {
     let collectionDataSource = PublishRelay<[WeightModel]>()
     let lineDataSource = PublishRelay<WeightModel>()
     let reloadAction = PublishRelay<Void>()
+    let saveImageUrlAction = PublishRelay<(String, String)>()
     let disposeBag = DisposeBag()
     
     init() {
         reloadAction
             .flatMapLatest {
                 ChartsService.getTargetData()
-                    .map { [$0.translateToWeightModel()] }
+                    .map { $0.translateToWeightModel() }
+                    .map { [weak self] in
+                        guard let `self` = self else { return [$0] }
+                        return [self.mergeLocalData(to: $0)]
+                    }
             }
             .bind(to: collectionDataSource)
             .disposed(by: disposeBag)
+        
+        saveImageUrlAction
+            .subscribe(onNext: { [weak self] month, imagePath in
+                let monthObject = MonthObject()
+                monthObject.month = month
+                monthObject.imagePath = imagePath
+                RealmManager.shared.update(object: monthObject)
+                self?.reloadAction.accept(())
+            }).disposed(by: disposeBag)
         
 //        reloadAction
 //            .flatMapLatest { _ -> Observable<[MonthSectionModel]> in
@@ -34,6 +48,19 @@ class RecordsViewModel {
 //            }
 //            .bind(to: collectionDataSource)
 //            .disposed(by: disposeBag)
+    }
+    
+    private func mergeLocalData(to model: WeightModel) -> WeightModel {
+        guard let localObjects = RealmManager.shared.query(type: MonthObject.self) else {
+            return model
+        }
+        var months = model.months
+        for (i, item) in model.months.enumerated() {
+            months[i].imagePath = localObjects.filter { $0.month == item.month }.first?.imagePath
+        }
+        var model = model
+        model.months = months
+        return model
     }
 }
 
