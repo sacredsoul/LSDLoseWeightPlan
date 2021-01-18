@@ -19,14 +19,8 @@ class CustomTabBarController: UIViewController {
     @IBOutlet weak var customTabBar: CustomTabBar!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var bottomView: UIView!
-    @IBOutlet weak var tabBarBottomMarginConstraint: NSLayoutConstraint!
     
     // MARK: - Properties
-    
-    var isHidden: Bool {
-        customTabBar.isHidden
-//        tabBarBottomMarginConstraint.constant == 0
-    }
     
     var selectedIndex: Int {
         set {
@@ -86,9 +80,8 @@ class CustomTabBarController: UIViewController {
     
     // MARK: - Hide tab bar
     func setTabBarHidden(_ hidden: Bool, animated: Bool) {
-        guard hidden != isHidden else { return }
+        guard hidden != customTabBar.isHidden else { return }
         customTabBar.isHidden = false
-        view.layoutIfNeeded()
         if animated {
             UIView.animate(withDuration: 0.2) { [weak self] in
                 self?.customTabBar.alpha = hidden ? 0 : 1

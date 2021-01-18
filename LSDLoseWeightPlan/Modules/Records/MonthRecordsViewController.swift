@@ -24,16 +24,11 @@ class MonthRecordsViewController: BaseViewController {
     var headImage: UIImage?
     private var xLabels: [String] = []
     private let currentMonth = PublishRelay<String>()
-    private let imagePath = PublishRelay<String>()
+    private let selectedImagePath = PublishRelay<String>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
         navigationController?.delegate = self
         navigationController?.setNavigationBarHidden(true, animated: true)
         viewModel.reloadAction.accept(())
@@ -55,7 +50,7 @@ class MonthRecordsViewController: BaseViewController {
         
         let collectionDataSource = RxCollectionViewSectionedReloadDataSource<WeightModel> { (dataSource, collectionView, indexPath, item) -> UICollectionViewCell in
             let cell = collectionView.dequeueReusableCell(withClass: CardCell.self, for: indexPath)
-            cell.imageView.image = UIImage(contentsOfFile: item.imagePath ?? "") ?? #imageLiteral(resourceName: "placeholder")
+            cell.imageView.kf.setImage(with: URL(fileURLWithPath: item.imagePath ?? ""), placeholder: #imageLiteral(resourceName: "placeholder"))
             cell.longPressAction
                 .subscribe(onNext: { [weak self] in
                     self?.currentMonth.accept(item.month)
@@ -92,9 +87,9 @@ class MonthRecordsViewController: BaseViewController {
                 self.navigationController?.pushViewController(viewController, animated: true)
             }).disposed(by: disposeBag)
         
-        imagePath
-            .withLatestFrom(Observable.combineLatest(currentMonth, imagePath))
-            .bind(to: viewModel.saveImageUrlAction)
+        selectedImagePath
+            .withLatestFrom(Observable.combineLatest(currentMonth, selectedImagePath))
+            .bind(to: viewModel.saveImagePathAction)
             .disposed(by: disposeBag)
     }
     
@@ -205,10 +200,8 @@ extension MonthRecordsViewController: UINavigationControllerDelegate {
 
 extension MonthRecordsViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let url = info[.imageURL] as? URL, let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last {
-            let toPath = path.appendingPathComponent(url.lastPathComponent)
-            try? FileManager().copyItem(at: url, to: URL(fileURLWithPath: toPath))
-            imagePath.accept(toPath)
+        if let url = info[.imageURL] as? URL, let path = url.droppedScheme()?.absoluteString {
+            selectedImagePath.accept(path)
         }
         picker.dismiss(animated: true, completion: nil)
     }

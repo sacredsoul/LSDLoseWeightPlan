@@ -83,6 +83,7 @@ class MonthDescriptionView: UIView {
         lowerLabel.alpha = 1
         
         leftLabel.center = CGPoint(x: emojiLabel.center.x - 30, y: emojiLabel.center.y)
+        rightLabel.center = self.emojiLabel.center
         leftLabel.alpha = 0
         rightLabel.alpha = 1
         leftLabel.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
