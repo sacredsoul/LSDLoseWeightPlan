@@ -26,6 +26,8 @@
 		5E6E492725ABDC8F00CB5A96 /* ChartsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6E492625ABDC8F00CB5A96 /* ChartsViewModel.swift */; };
 		5E6E49C325B0266600CB5A96 /* MonthObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6E49C225B0266600CB5A96 /* MonthObject.swift */; };
 		5E6E49C625B027EB00CB5A96 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6E49C525B027EB00CB5A96 /* RealmManager.swift */; };
+		5E74630D25C161CC00713F16 /* MonthWeightLineChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74630B25C161CB00713F16 /* MonthWeightLineChartCell.swift */; };
+		5E74630E25C161CC00713F16 /* MonthWeightLineChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E74630C25C161CB00713F16 /* MonthWeightLineChartCell.xib */; };
 		5E839EFE25931ADA00815F43 /* RxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E839EFB25931ADA00815F43 /* RxCollectionViewCell.swift */; };
 		5E839EFF25931ADA00815F43 /* RxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E839EFD25931ADA00815F43 /* RxTableViewCell.swift */; };
 		5E839F0425931AED00815F43 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E839F0225931AED00815F43 /* ViewExtensions.swift */; };
@@ -70,6 +72,8 @@
 		5E6E492625ABDC8F00CB5A96 /* ChartsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewModel.swift; sourceTree = "<group>"; };
 		5E6E49C225B0266600CB5A96 /* MonthObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthObject.swift; sourceTree = "<group>"; };
 		5E6E49C525B027EB00CB5A96 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		5E74630B25C161CB00713F16 /* MonthWeightLineChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWeightLineChartCell.swift; sourceTree = "<group>"; };
+		5E74630C25C161CB00713F16 /* MonthWeightLineChartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthWeightLineChartCell.xib; sourceTree = "<group>"; };
 		5E839EFB25931ADA00815F43 /* RxCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCollectionViewCell.swift; sourceTree = "<group>"; };
 		5E839EFD25931ADA00815F43 /* RxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxTableViewCell.swift; sourceTree = "<group>"; };
 		5E839F0225931AED00815F43 /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
@@ -307,6 +311,8 @@
 				5EAB154125A7EB5900DBA4EC /* MonthDescriptionView.xib */,
 				5E6E490C25A83CA300CB5A96 /* MonthDescriptionCell.swift */,
 				5E6E490D25A83CA300CB5A96 /* MonthDescriptionCell.xib */,
+				5E74630B25C161CB00713F16 /* MonthWeightLineChartCell.swift */,
+				5E74630C25C161CB00713F16 /* MonthWeightLineChartCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -382,6 +388,7 @@
 				5E839F0E259323F500815F43 /* TargetViewController.storyboard in Resources */,
 				5E4F418D259304A60063C1D5 /* LaunchScreen.storyboard in Resources */,
 				5EAB150D25A6D31A00DBA4EC /* Records.storyboard in Resources */,
+				5E74630E25C161CC00713F16 /* MonthWeightLineChartCell.xib in Resources */,
 				5E6E490F25A83CA300CB5A96 /* MonthDescriptionCell.xib in Resources */,
 				5E83A19B259D9A0100815F43 /* CardCell.xib in Resources */,
 				5E4F418A259304A60063C1D5 /* Assets.xcassets in Resources */,
@@ -446,6 +453,7 @@
 				5E83A196259D7A7100815F43 /* CardsLayout.swift in Sources */,
 				4521C09725AABAF20012D0E7 /* AnimatedTransition.swift in Sources */,
 				5E6E49C625B027EB00CB5A96 /* RealmManager.swift in Sources */,
+				5E74630D25C161CC00713F16 /* MonthWeightLineChartCell.swift in Sources */,
 				5E4F422C25930B4E0063C1D5 /* BaseViewController.swift in Sources */,
 				5E839F2C2593321F00815F43 /* GitHubAPI.swift in Sources */,
 				5EAB14E325A6D19B00DBA4EC /* MonthRecordsViewController.swift in Sources */,

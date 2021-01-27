@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum MonthChartItemType {
+    case summary(item: WeightMonthModel)
+    case lineChart(item: WeightMonthModel)
+}
+
 struct WeightModel {
     var target: String = ""
     var months: [WeightMonthModel] = []
@@ -21,6 +26,19 @@ extension WeightModel: SectionModelType {
     init(original: Self, items: [Item]) {
         self = original
         self.months = items
+    }
+}
+
+struct MonthChartSectionModel {
+    var items: [MonthChartItemType]
+}
+
+extension MonthChartSectionModel: SectionModelType {
+    typealias Item = MonthChartItemType
+    
+    init(original: Self, items: [Item]) {
+        self = original
+        self.items = items
     }
 }
 

@@ -20,8 +20,10 @@ class MonthChartsViewController: BaseViewController {
     
     // MARK: - Private properties
     private let topInset: CGFloat = 500
+    private let bottomInset: CGFloat = 80
     private let maxPullDownDistance: CGFloat = 40
     private var lastOffsetY: CGFloat = -500
+    private var dataSource: RxTableViewSectionedReloadDataSource<MonthChartSectionModel>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,18 +34,28 @@ class MonthChartsViewController: BaseViewController {
     
     override func setupSubviews() {
         tableView.contentInsetAdjustmentBehavior = .never
-        tableView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: bottomInset, right: 0)
         tableView.register(nibWithCellClass: MonthDescriptionCell.self)
+        tableView.register(nibWithCellClass: MonthWeightLineChartCell.self)
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
     }
     
     override func setupBindings() {
-        let dataSource = RxTableViewSectionedReloadDataSource<WeightMonthModel> { (dataSource, tableView, indexPath, item) -> UITableViewCell in
-            let cell = tableView.dequeueReusableCell(withClass: MonthDescriptionCell.self, for: indexPath)
-            cell.monthView.monthLabel.text = dataSource[indexPath.section].month
-            cell.monthView.emojiLabel.text = dataSource[indexPath.section].emoji
-            return cell
+        let dataSource = RxTableViewSectionedReloadDataSource<MonthChartSectionModel> { (dataSource, tableView, indexPath, item) -> UITableViewCell in
+            switch item {
+            case .summary(let item):
+                let cell = tableView.dequeueReusableCell(withClass: MonthDescriptionCell.self, for: indexPath)
+                cell.monthView.monthLabel.text = item.month
+                cell.monthView.emojiLabel.text = item.emoji
+                return cell
+                
+            case .lineChart(let item):
+                let cell = tableView.dequeueReusableCell(withClass: MonthWeightLineChartCell.self, for: indexPath)
+                cell.setupLineChartData(model: item)
+                return cell
+            }
         }
+        self.dataSource = dataSource
         viewModel.dataSource
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
@@ -52,6 +64,15 @@ class MonthChartsViewController: BaseViewController {
 }
 
 extension MonthChartsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch dataSource[indexPath.section].items[indexPath.row] {
+        case .summary:
+            return 80
+        case .lineChart:
+            return 300
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return .leastNormalMagnitude
     }
