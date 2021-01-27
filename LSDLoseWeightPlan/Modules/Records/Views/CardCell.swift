@@ -17,7 +17,7 @@ class CardCell: RxCollectionViewCell {
     private let waveRate: CGFloat = 0.01
     private let waveSpeed: CGFloat = 0.05
     private let risingSpeed: CGFloat = 3
-    private let frontWaveColor = UIColor.white.withAlphaComponent(0.2)
+    private let frontWaveColor = UIColor.black.withAlphaComponent(0.2)
     private let backWaveColor = UIColor.white.withAlphaComponent(0.1)
     private var offset: CGFloat = 0
     private var risingOffset: CGFloat = 0
@@ -100,28 +100,8 @@ class CardCell: RxCollectionViewCell {
         backWaveLayer.fillColor = backWaveColor.cgColor
         self.backWaveLayer = backWaveLayer
         
-        imageView.layer.addSublayer(backWaveLayer)
-        imageView.layer.addSublayer(frontWaveLayer)
-    }
-    
-    private func resetWave() {
-        resetOffset()
-        removeWave()
-    }
-    
-    private func resetOffset() {
-        offset = 0
-        risingOffset = 0
-    }
-    
-    private func removeWave() {
-        let animation = CABasicAnimation(keyPath: "opacity")
-        animation.duration = 0.2
-        animation.fromValue = 1
-        animation.toValue = 0
-        animation.delegate = self
-        frontWaveLayer?.add(animation, forKey: nil)
-        backWaveLayer?.add(animation, forKey: nil)
+        contentView.layer.addSublayer(backWaveLayer)
+        contentView.layer.addSublayer(frontWaveLayer)
     }
     
     private func startWave() {
@@ -135,9 +115,9 @@ class CardCell: RxCollectionViewCell {
     }
     
     @objc private func wave() {
-        isFull = risingOffset >= contentView.bounds.height
+        isFull = risingOffset >= contentView.bounds.height - waveHeight
         offset += waveSpeed
-        risingOffset += risingSpeed
+        risingOffset += isFull ? 0 : risingSpeed
         
         let startY = contentView.bounds.maxY
         
@@ -169,6 +149,32 @@ class CardCell: RxCollectionViewCell {
         
         frontPath.close()
         frontWaveLayer?.path = frontPath.cgPath
+    }
+    
+    private func resetWave() {
+        resetOffset()
+        removeWave()
+    }
+    
+    private func resetOffset() {
+        offset = 0
+        risingOffset = 0
+    }
+    
+    private func removeWave() {
+        guard let frontWaveLayer = frontWaveLayer, let backWaveLayer = backWaveLayer else {
+            return
+        }
+        let value1 = frontWaveLayer.position.y
+        let value2 = value1 + frontWaveLayer.bounds.height * 1.5
+        
+        let animation = CAKeyframeAnimation(keyPath: "position.y")
+        animation.duration = 0.4
+        animation.timingFunction = CAMediaTimingFunction(name: .easeIn)
+        animation.values = [value1, value2]
+        animation.delegate = self
+        frontWaveLayer.add(animation, forKey: nil)
+        backWaveLayer.add(animation, forKey: nil)
     }
 }
 
