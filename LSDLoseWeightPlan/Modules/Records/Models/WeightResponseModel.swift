@@ -37,15 +37,14 @@ struct WeightResponseModel: HandyJSON {
     private func translateOriginToMonthModels(content: String) -> [WeightMonthModel] {
         let dataArray = content.split(separator: "\n")
         let dayModels = dataArray
-            .filter { $0.count == 45 }
+            .filter { $0.count == 40 }
             .map { row -> WeightDayModel in
                 var model = WeightDayModel()
                 model.date = String( row[row.index(row.startIndex, offsetBy: 2) ..< row.index(row.startIndex, offsetBy: 12)] )
                 model.weight = String( row[row.index(row.startIndex, offsetBy: 19) ..< row.index(row.startIndex, offsetBy: 23)] ).cgFloat() ?? 0
                 model.burpees = String( row[row.index(row.startIndex, offsetBy: 26) ..< row.index(row.startIndex, offsetBy:  28)] ).int ?? 0
                 model.pushUps = String( row[row.index(row.startIndex, offsetBy: 31) ..< row.index(row.startIndex, offsetBy:  33)] ).int ?? 0
-                model.fitBoxing = String( row[row.index(row.startIndex, offsetBy: 36) ..< row.index(row.startIndex, offsetBy:  38)] ).int ?? 0
-                model.hiit = String( row[row.index(row.startIndex, offsetBy: 41) ..< row.index(row.startIndex, offsetBy:  43)] ).int ?? 0
+                model.fullBody = String( row[row.index(row.startIndex, offsetBy: 36) ..< row.index(row.startIndex, offsetBy:  38)] ).int ?? 0
                 return model
             }
         let monthModels = dataArray

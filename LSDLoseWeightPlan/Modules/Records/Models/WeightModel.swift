@@ -48,6 +48,5 @@ struct WeightDayModel {
     var weight: CGFloat = 0
     var burpees: Int = 0
     var pushUps: Int = 0
-    var fitBoxing: Int = 0
-    var hiit: Int = 0
+    var fullBody: Int = 0
 }
