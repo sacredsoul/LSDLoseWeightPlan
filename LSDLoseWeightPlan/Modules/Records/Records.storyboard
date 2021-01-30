@@ -36,12 +36,6 @@
                                     <constraint firstAttribute="trailing" secondItem="Hfs-vv-RC9" secondAttribute="trailing" id="y2z-sv-fiY"/>
                                 </constraints>
                             </view>
-                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="flz-Ke-zS3">
-                                <rect key="frame" x="0.0" y="80" width="414" height="576"/>
-                                <color key="backgroundColor" name="backgroundColor"/>
-                                <collectionViewLayout key="collectionViewLayout" id="exz-aM-y8A" customClass="CardsLayout" customModule="LSDLoseWeightPlan" customModuleProvider="target"/>
-                                <cells/>
-                            </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Nc-Vm-4ce" customClass="MonthDescriptionView" customModule="LSDLoseWeightPlan" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="656" width="414" height="80"/>
                                 <color key="backgroundColor" name="backgroundColor"/>
@@ -49,6 +43,12 @@
                                     <constraint firstAttribute="height" constant="80" id="Tjb-8L-SGb"/>
                                 </constraints>
                             </view>
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="flz-Ke-zS3">
+                                <rect key="frame" x="0.0" y="80" width="414" height="656"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewLayout key="collectionViewLayout" id="exz-aM-y8A" customClass="CardsLayout" customModule="LSDLoseWeightPlan" customModuleProvider="target"/>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="N2h-cW-B33"/>
                         <color key="backgroundColor" name="backgroundColor"/>
@@ -58,10 +58,10 @@
                             <constraint firstItem="flz-Ke-zS3" firstAttribute="top" secondItem="cdb-EI-PVy" secondAttribute="bottom" id="6ss-68-5cC"/>
                             <constraint firstItem="N2h-cW-B33" firstAttribute="bottom" secondItem="6Nc-Vm-4ce" secondAttribute="bottom" id="DNK-9f-DNH"/>
                             <constraint firstItem="cdb-EI-PVy" firstAttribute="trailing" secondItem="N2h-cW-B33" secondAttribute="trailing" id="FyU-6y-0ik"/>
+                            <constraint firstItem="flz-Ke-zS3" firstAttribute="bottom" secondItem="N2h-cW-B33" secondAttribute="bottom" id="KZt-Um-img"/>
                             <constraint firstItem="flz-Ke-zS3" firstAttribute="leading" secondItem="N2h-cW-B33" secondAttribute="leading" id="Rfe-As-L6J"/>
                             <constraint firstItem="6Nc-Vm-4ce" firstAttribute="leading" secondItem="N2h-cW-B33" secondAttribute="leading" id="h9z-vW-hn8"/>
                             <constraint firstItem="cdb-EI-PVy" firstAttribute="leading" secondItem="N2h-cW-B33" secondAttribute="leading" id="hMM-Mt-DZ5"/>
-                            <constraint firstItem="6Nc-Vm-4ce" firstAttribute="top" secondItem="flz-Ke-zS3" secondAttribute="bottom" id="vAw-KY-ebP"/>
                             <constraint firstItem="N2h-cW-B33" firstAttribute="trailing" secondItem="6Nc-Vm-4ce" secondAttribute="trailing" id="zUo-tg-Sqp"/>
                         </constraints>
                     </view>
@@ -73,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uTM-mG-d3K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="50.724637681159422" y="212.94642857142856"/>
+            <point key="canvasLocation" x="50.724637681159422" y="212.77173913043481"/>
         </scene>
         <!--Month Charts View Controller-->
         <scene sceneID="J0v-Jl-6l1">

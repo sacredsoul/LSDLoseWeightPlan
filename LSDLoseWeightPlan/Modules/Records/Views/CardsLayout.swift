@@ -61,7 +61,8 @@ class CardsLayout: UICollectionViewLayout {
         attributes.size = itemSize
         let visibleIndex = indexPath.item - currentIndex
         let topCardMidX = collectionView.contentOffset.x + itemSize.width / 2 + spacing
-        attributes.center = CGPoint(x: topCardMidX + spacing * CGFloat(visibleIndex), y: collectionView.bounds.midY)
+        let y = collectionView.bounds.midY - (collectionView.bounds.height - itemSize.height) / 4
+        attributes.center = CGPoint(x: topCardMidX + spacing * CGFloat(visibleIndex), y: y)
         attributes.zIndex = numberOfItems - indexPath.item
         
         let offset = CGFloat(Int(collectionView.contentOffset.x) % Int(collectionView.bounds.width))

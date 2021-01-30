@@ -172,6 +172,8 @@ class CardCell: RxCollectionViewCell {
         animation.duration = 0.4
         animation.timingFunction = CAMediaTimingFunction(name: .easeIn)
         animation.values = [value1, value2]
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = .forwards
         animation.delegate = self
         frontWaveLayer.add(animation, forKey: nil)
         backWaveLayer.add(animation, forKey: nil)
