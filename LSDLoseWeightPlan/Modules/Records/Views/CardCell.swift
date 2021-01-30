@@ -16,7 +16,7 @@ class CardCell: RxCollectionViewCell {
     private let waveHeight: CGFloat = 10
     private let waveRate: CGFloat = 0.01
     private let waveSpeed: CGFloat = 0.05
-    private let risingSpeed: CGFloat = 3
+    private let risingSpeed: CGFloat = 4
     private let frontWaveColor = UIColor.black.withAlphaComponent(0.2)
     private let backWaveColor = UIColor.white.withAlphaComponent(0.1)
     private var offset: CGFloat = 0
