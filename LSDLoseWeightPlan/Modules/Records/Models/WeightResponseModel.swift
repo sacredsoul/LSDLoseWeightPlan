@@ -41,10 +41,10 @@ struct WeightResponseModel: HandyJSON {
             .map { row -> WeightDayModel in
                 var model = WeightDayModel()
                 model.date = String( row[row.index(row.startIndex, offsetBy: 2) ..< row.index(row.startIndex, offsetBy: 12)] )
-                model.weight = String( row[row.index(row.startIndex, offsetBy: 18) ..< row.index(row.startIndex, offsetBy: 24)] ).cgFloat() ?? 0
-                model.burpees = String( row[row.index(row.startIndex, offsetBy: 25) ..< row.index(row.startIndex, offsetBy:  30)] ).int ?? 0
-                model.pushUps = String( row[row.index(row.startIndex, offsetBy: 31) ..< row.index(row.startIndex, offsetBy:  36)] ).int ?? 0
-                model.fullBody = String( row[row.index(row.startIndex, offsetBy: 37) ..< row.index(row.startIndex, offsetBy:  42)] ).int ?? 0
+                model.weight = String( row[row.index(row.startIndex, offsetBy: 18) ..< row.index(row.startIndex, offsetBy: 24)] ).trimmed.cgFloat() ?? 0
+                model.burpees = String( row[row.index(row.startIndex, offsetBy: 25) ..< row.index(row.startIndex, offsetBy:  30)] ).trimmed.int ?? 0
+                model.pushUps = String( row[row.index(row.startIndex, offsetBy: 31) ..< row.index(row.startIndex, offsetBy:  36)] ).trimmed.int ?? 0
+                model.fullBody = String( row[row.index(row.startIndex, offsetBy: 37) ..< row.index(row.startIndex, offsetBy:  42)] ).trimmed.int ?? 0
                 return model
             }
         let monthModels = dataArray

@@ -45,8 +45,7 @@ class MonthChartsViewController: BaseViewController {
             switch item {
             case .summary(let item):
                 let cell = tableView.dequeueReusableCell(withClass: MonthDescriptionCell.self, for: indexPath)
-                cell.monthView.monthLabel.text = item.month
-                cell.monthView.emojiLabel.text = item.emoji
+                cell.viewModel.dataSource.accept(item)
                 return cell
                 
             case .lineChart(let item):
@@ -67,7 +66,7 @@ extension MonthChartsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch dataSource[indexPath.section].items[indexPath.row] {
         case .summary:
-            return 80
+            return 280
         case .lineChart:
             return 300
         }

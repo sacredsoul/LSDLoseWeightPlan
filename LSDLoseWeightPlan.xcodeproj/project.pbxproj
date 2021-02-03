@@ -46,6 +46,7 @@
 		5EAB150D25A6D31A00DBA4EC /* Records.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E839F1525932B2700815F43 /* Records.storyboard */; };
 		5EAB153F25A7EA7900DBA4EC /* MonthDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAB153E25A7EA7900DBA4EC /* MonthDescriptionView.swift */; };
 		5EAB154225A7EB5900DBA4EC /* MonthDescriptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EAB154125A7EB5900DBA4EC /* MonthDescriptionView.xib */; };
+		5EF9A3B425CA92BB008D3604 /* MonthDescriptionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF9A3B325CA92BB008D3604 /* MonthDescriptionCellViewModel.swift */; };
 		847CD4DCFC0C018977DEA440 /* Pods_LSDLoseWeightPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5C23F921C5F35546F1C74C /* Pods_LSDLoseWeightPlan.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		5EAB150925A6D2A000DBA4EC /* MonthChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthChartsViewController.swift; sourceTree = "<group>"; };
 		5EAB153E25A7EA7900DBA4EC /* MonthDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthDescriptionView.swift; sourceTree = "<group>"; };
 		5EAB154125A7EB5900DBA4EC /* MonthDescriptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthDescriptionView.xib; sourceTree = "<group>"; };
+		5EF9A3B325CA92BB008D3604 /* MonthDescriptionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthDescriptionCellViewModel.swift; sourceTree = "<group>"; };
 		732F6EC0BC2D2DC3F0034D42 /* Pods-LSDLoseWeightPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSDLoseWeightPlan.debug.xcconfig"; path = "Target Support Files/Pods-LSDLoseWeightPlan/Pods-LSDLoseWeightPlan.debug.xcconfig"; sourceTree = "<group>"; };
 		BB5C23F921C5F35546F1C74C /* Pods_LSDLoseWeightPlan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LSDLoseWeightPlan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -287,6 +289,7 @@
 			children = (
 				5E839F2E2593328500815F43 /* RecordsViewModel.swift */,
 				5E6E492625ABDC8F00CB5A96 /* ChartsViewModel.swift */,
+				5EF9A3B325CA92BB008D3604 /* MonthDescriptionCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				5EAB14E325A6D19B00DBA4EC /* MonthRecordsViewController.swift in Sources */,
 				5E839F0B2593224D00815F43 /* TargetViewController.swift in Sources */,
 				5EAB150A25A6D2A000DBA4EC /* MonthChartsViewController.swift in Sources */,
+				5EF9A3B425CA92BB008D3604 /* MonthDescriptionCellViewModel.swift in Sources */,
 				5E6E49C325B0266600CB5A96 /* MonthObject.swift in Sources */,
 				5E83A18E259D60D900815F43 /* MonthModel.swift in Sources */,
 				5E839EFE25931ADA00815F43 /* RxCollectionViewCell.swift in Sources */,
