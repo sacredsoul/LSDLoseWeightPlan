@@ -21,11 +21,11 @@ struct WeightResponseModel: HandyJSON {
     var encoding: String = ""
     
     func translateToWeightModel() -> WeightModel {
-        if let data = Data(base64Encoded: self.content, options: .ignoreUnknownCharacters), let content = String(data: data, encoding: .utf8) {
-            let target = translateOriginToTarget(content: content)
-            return WeightModel(target: target, months: translateOriginToMonthModels(content: content))
+        guard let data = Data(base64Encoded: self.content, options: .ignoreUnknownCharacters), let content = String(data: data, encoding: .utf8) else {
+            return WeightModel()
         }
-        return WeightModel()
+        let target = translateOriginToTarget(content: content)
+        return WeightModel(target: target, months: translateOriginToMonthModels(content: content))
     }
     
     private func translateOriginToTarget(content: String) -> String {

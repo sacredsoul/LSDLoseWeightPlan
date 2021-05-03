@@ -11,7 +11,7 @@ target 'LSDLoseWeightPlan' do
   pod 'RxDataSources'
   pod 'SwifterSwift'
   pod 'Kingfisher'
-  pod 'Moya/RxSwift'
+  pod 'Moya', '15.0.0-alpha.1'
   pod 'SwiftyJSON'
   pod 'HandyJSON'
   pod 'Charts'

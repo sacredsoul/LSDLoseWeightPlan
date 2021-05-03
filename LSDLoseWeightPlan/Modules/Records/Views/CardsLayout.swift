@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CardsLayoutDelegate: class {
+protocol CardsLayoutDelegate: AnyObject {
     func transition(indexPath: IndexPath, progress: CGFloat)
     func transition(fromIndexPath: IndexPath, toIndexPath: IndexPath, progress: CGFloat)
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45216A2A263FAA1A00792B8A /* Observable+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45216A27263FAA1A00792B8A /* Observable+Response.swift */; };
+		45216A2B263FAA1A00792B8A /* MoyaProvider+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45216A28263FAA1A00792B8A /* MoyaProvider+Rx.swift */; };
+		45216A2C263FAA1A00792B8A /* Single+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45216A29263FAA1A00792B8A /* Single+Response.swift */; };
 		4521C09725AABAF20012D0E7 /* AnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4521C09625AABAF20012D0E7 /* AnimatedTransition.swift */; };
 		5E4F4181259304A50063C1D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F4180259304A50063C1D5 /* AppDelegate.swift */; };
 		5E4F4183259304A50063C1D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F4182259304A50063C1D5 /* SceneDelegate.swift */; };
@@ -52,6 +55,9 @@
 
 /* Begin PBXFileReference section */
 		32B740839EC127B76CF2C100 /* Pods-LSDLoseWeightPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSDLoseWeightPlan.release.xcconfig"; path = "Target Support Files/Pods-LSDLoseWeightPlan/Pods-LSDLoseWeightPlan.release.xcconfig"; sourceTree = "<group>"; };
+		45216A27263FAA1A00792B8A /* Observable+Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Response.swift"; sourceTree = "<group>"; };
+		45216A28263FAA1A00792B8A /* MoyaProvider+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MoyaProvider+Rx.swift"; sourceTree = "<group>"; };
+		45216A29263FAA1A00792B8A /* Single+Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Single+Response.swift"; sourceTree = "<group>"; };
 		4521C09625AABAF20012D0E7 /* AnimatedTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTransition.swift; sourceTree = "<group>"; };
 		5E4F417D259304A50063C1D5 /* LSDLoseWeightPlan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSDLoseWeightPlan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E4F4180259304A50063C1D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +122,16 @@
 				BB5C23F921C5F35546F1C74C /* Pods_LSDLoseWeightPlan.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		45216A26263FAA1A00792B8A /* RxMoya */ = {
+			isa = PBXGroup;
+			children = (
+				45216A27263FAA1A00792B8A /* Observable+Response.swift */,
+				45216A28263FAA1A00792B8A /* MoyaProvider+Rx.swift */,
+				45216A29263FAA1A00792B8A /* Single+Response.swift */,
+			);
+			path = RxMoya;
 			sourceTree = "<group>";
 		};
 		5E4F4174259304A50063C1D5 = {
@@ -257,6 +273,7 @@
 			children = (
 				5E839F0225931AED00815F43 /* ViewExtensions.swift */,
 				5E839F0325931AED00815F43 /* GlobalConstants.swift */,
+				45216A26263FAA1A00792B8A /* RxMoya */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -463,6 +480,7 @@
 				5E839F0B2593224D00815F43 /* TargetViewController.swift in Sources */,
 				5EAB150A25A6D2A000DBA4EC /* MonthChartsViewController.swift in Sources */,
 				5EF9A3B425CA92BB008D3604 /* MonthDescriptionCellViewModel.swift in Sources */,
+				45216A2C263FAA1A00792B8A /* Single+Response.swift in Sources */,
 				5E6E49C325B0266600CB5A96 /* MonthObject.swift in Sources */,
 				5E83A18E259D60D900815F43 /* MonthModel.swift in Sources */,
 				5E839EFE25931ADA00815F43 /* RxCollectionViewCell.swift in Sources */,
@@ -476,8 +494,10 @@
 				5E4F41DD25930B330063C1D5 /* APIManager.swift in Sources */,
 				5E4F4181259304A50063C1D5 /* AppDelegate.swift in Sources */,
 				5E83A19A259D9A0100815F43 /* CardCell.swift in Sources */,
+				45216A2A263FAA1A00792B8A /* Observable+Response.swift in Sources */,
 				5E4F422E25930B4E0063C1D5 /* CustomTabBar.swift in Sources */,
 				5E4F423025930B4E0063C1D5 /* BaseNavigationController.swift in Sources */,
+				45216A2B263FAA1A00792B8A /* MoyaProvider+Rx.swift in Sources */,
 				5E4F4183259304A50063C1D5 /* SceneDelegate.swift in Sources */,
 				5E839F0425931AED00815F43 /* ViewExtensions.swift in Sources */,
 			);
@@ -627,6 +647,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CV78BKBJ5Y;
 				INFOPLIST_FILE = LSDLoseWeightPlan/Info.plist;
@@ -636,6 +657,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LSD.LSDLoseWeightPlan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -647,6 +669,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CV78BKBJ5Y;
 				INFOPLIST_FILE = LSDLoseWeightPlan/Info.plist;
@@ -656,6 +679,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LSD.LSDLoseWeightPlan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

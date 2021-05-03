@@ -34,7 +34,7 @@ class MonthDescriptionCell: RxTableViewCell {
     }
     
     override func setupSubviews() {
-        weightTitleLabel.text = "Weight \n Changed"
+        weightTitleLabel.text = "Weight\nChanged"
     }
     
     override func setupBindings() {
@@ -52,10 +52,10 @@ class MonthDescriptionCell: RxTableViewCell {
             .flatMapLatest { data -> Observable<String> in
                 let days = data.days.filter { $0.weight > 0 }
                 guard let first = days.first, let last = days.last else {
-                    return Observable.just("0")
+                    return Observable.just("0.0")
                 }
                 let deta = last.weight - first.weight
-                let symbol = deta > 0 ? "+" : "-"
+                let symbol = deta > 0 ? "+" : deta < 0 ? "-" : ""
                 let value = symbol + String(format: "%.1f", deta.abs)
                 return Observable.just(value)
             }

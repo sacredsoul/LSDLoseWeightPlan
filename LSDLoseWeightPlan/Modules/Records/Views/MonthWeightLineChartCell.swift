@@ -74,6 +74,8 @@ class MonthWeightLineChartCell: RxTableViewCell {
             xLabels.append(item.date)
         }
         
+        guard !dataEntries.isEmpty else { return }
+        
         let dataSet = LineChartDataSet(entries: dataEntries)
         dataSet.drawFilledEnabled = true
         dataSet.mode = .cubicBezier
