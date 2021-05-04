@@ -85,6 +85,7 @@ class MonthWeightLineChartCell: RxTableViewCell {
         dataSet.circleHoleColor = .white
         dataSet.valueFont = UIFont.systemFont(ofSize: 12)
         dataSet.setColor(UIColor(red: 0.114, green: 0.812, blue: 1, alpha: 1))
+        dataSet.valueFormatter = self
         
         let colors = [UIColor(hex: 0xC4F3FF)?.cgColor, UIColor(hex: 0x4083D6)?.cgColor] as CFArray
         let gradient = CGGradient(colorsSpace: nil, colors: colors, locations: nil)
@@ -105,5 +106,11 @@ extension MonthWeightLineChartCell: IAxisValueFormatter {
             return ""
         }
         return xLabels[value.int].date(withFormat: "yyyy-MM-dd")!.string(withFormat: "d")
+    }
+}
+
+extension MonthWeightLineChartCell: IValueFormatter {
+    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
+        return String(format: "%.1f", value)
     }
 }

@@ -43,6 +43,7 @@ class CardCell: RxCollectionViewCell {
         clipsToBounds = false
         
         let longPress = UILongPressGestureRecognizer()
+        longPress.minimumPressDuration = 0.1
         contentView.addGestureRecognizer(longPress)
         
         imageView.layer.cornerRadius = 10
@@ -177,12 +178,18 @@ class CardCell: RxCollectionViewCell {
         animation.delegate = self
         frontWaveLayer.add(animation, forKey: nil)
         backWaveLayer.add(animation, forKey: nil)
+        contentView.isUserInteractionEnabled = false
     }
 }
 
 extension CardCell: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        frontWaveLayer?.removeFromSuperlayer()
-        backWaveLayer?.removeFromSuperlayer()
+        if flag {
+            frontWaveLayer?.removeFromSuperlayer()
+            backWaveLayer?.removeFromSuperlayer()
+            frontWaveLayer = nil
+            backWaveLayer = nil
+        }
+        contentView.isUserInteractionEnabled = true
     }
 }

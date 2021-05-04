@@ -39,12 +39,6 @@ class MonthRecordsViewController: BaseViewController {
     }
 
     override func setupBindings() {
-//        viewModel.lineDataSource
-//            .subscribe(onNext: { [weak self] model in
-//                if let last = model.months.last {
-//                    self?.setupLineChartData(model: last)
-//                }
-//            }).disposed(by: disposeBag)
         
         let collectionDataSource = RxCollectionViewSectionedReloadDataSource<WeightModel> { (dataSource, collectionView, indexPath, item) -> UICollectionViewCell in
             let cell = collectionView.dequeueReusableCell(withClass: CardCell.self, for: indexPath)
